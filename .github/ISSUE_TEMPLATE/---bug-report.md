@@ -3,7 +3,8 @@ name: "\U0001F41B Bug report"
 about: Create a bug report to help us improve
 title: ''
 labels: "\U0001F41E Bug"
-assignees: DarrylBrooks97, Garrett1Tolbert
+assignees: Garrett1Tolbert, DarrylBrooks97
+
 ---
 
 **Describe the bug**
