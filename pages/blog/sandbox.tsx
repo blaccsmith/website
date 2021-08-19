@@ -1,4 +1,5 @@
-import { Grid, Box, Heading, Button, Stack, Link } from '@chakra-ui/react';
+import BlogHeader from '@/components/molecules/BlogHeader';
+import { Box, Flex, Heading, Button, Stack, Link } from '@chakra-ui/react';
 import { getBlog } from 'mdx';
 import components from 'mdx/components';
 import { GetStaticProps } from 'next';
@@ -15,14 +16,10 @@ export default function Sandbox({ frontMatter, source }: Props): JSX.Element {
 	const router = useRouter();
 
 	return (
-		<Grid
-			templateColumns="1fr 3fr"
-			h="calc(100% - 292px)"
-			gap="4"
-			p="6"
-			pb="0"
-		>
+		<Flex justifyContent="space-evenly" p="6">
 			<Box
+				pos="sticky"
+				top="24"
 				h="fit-content"
 				w="fit-content"
 				rounded="md"
@@ -62,10 +59,13 @@ export default function Sandbox({ frontMatter, source }: Props): JSX.Element {
 					Update changes
 				</Button>
 			</Box>
-			<Box overflowY="scroll">
-				<MDXRemote {...source} components={components} />
+			<Box ml="4">
+				<BlogHeader metadata={frontMatter} />
+				<Box as="article" id="content">
+					<MDXRemote {...source} components={components} />
+				</Box>
 			</Box>
-		</Grid>
+		</Flex>
 	);
 }
 
