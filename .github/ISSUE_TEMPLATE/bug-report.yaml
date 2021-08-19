@@ -40,7 +40,7 @@ body:
       id: Screenshots
       attributes:
           value: |
-              If applicable, add screenshots to this issue to help explain your problem
+              ## If applicable, add screenshots to this issue to help explain your problem
 
     - type: checkboxes
       id: Location
