@@ -25,8 +25,8 @@ body:
               2. Click on '....'
               3. Scroll down to '....'
               4. See error
-          validations:
-              required: true
+      validations:
+        required: true
 
     - type: input
       id: Expected
@@ -41,9 +41,9 @@ body:
       attributes:
           value: |
               Screenshots
-          description: If applicable, add screenshots to this issue to help explain your problem
+      description: If applicable, add screenshots to this issue to help explain your problem
 
-    - type: checkbox
+    - type: checkboxes
       id: Location
       attributes:
           label: Where is this happening
