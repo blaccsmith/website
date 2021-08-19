@@ -32,7 +32,7 @@ body:
       id: Expected
       attributes:
           label: Expected Behavior
-      description: A clear and concise description of what you expected to happen
+          description: A clear and concise description of what you expected to happen
       validations:
           required: true
 
@@ -41,7 +41,7 @@ body:
       attributes:
           value: |
               Screenshots
-      description: If applicable, add screenshots to this issue to help explain your problem
+          label: If applicable, add screenshots to this issue to help explain your problem
 
     - type: checkboxes
       id: Location
