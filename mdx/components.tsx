@@ -4,9 +4,13 @@ import { Heading, Box, Link, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 
 export const components = {
-	h2: (props: any) => <Heading as="h2" fontSize="3xl" mb="3" {...props} />,
-	h3: (props: any) => <Heading as="h3" fontSize="xl" mb="2" {...props} />,
-	p: (props: any) => <Text mb="9" {...props} />,
+	h2: (props: any) => (
+		<Heading as="h2" fontSize="3xl" mb="3" color="white" {...props} />
+	),
+	h3: (props: any) => (
+		<Heading as="h3" fontSize="xl" mb="2" color="white" {...props} />
+	),
+	p: (props: any) => <Text mb="9" color="white" {...props} />,
 	a: (props: any) => (
 		<Link
 			color="blue"
