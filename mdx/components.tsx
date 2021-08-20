@@ -1,6 +1,15 @@
 /* eslint-disable react/display-name */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Heading, Box, Link, Text } from '@chakra-ui/react';
+import Blockquote from '@/components/atoms/Blockquote';
+import {
+	Heading,
+	Box,
+	Link,
+	Text,
+	List,
+	ListItem,
+	OrderedList,
+} from '@chakra-ui/react';
 import Image from 'next/image';
 
 export const components = {
@@ -13,23 +22,42 @@ export const components = {
 	p: (props: any) => <Text mb="9" color="white" {...props} />,
 	a: (props: any) => (
 		<Link
-			color="blue"
+			color="brand.accent.dark"
 			textDecoration="underline"
 			target="_blank"
 			{...props}
 		/>
 	),
+	blockquote: (props: any) => <Blockquote {...props} />,
 	img: (props: any) => (
 		<Box
-			mb="6"
+			my="6"
 			pos="relative"
 			overflow="hidden"
 			rounded="xl"
-			w="200px"
-			h="200px"
+			w="auto"
+			maxW="700px"
+			minH="350px"
 		>
 			<Image layout="fill" objectFit="cover" {...props} />
 		</Box>
+	),
+	ul: (props: any) => (
+		<List
+			ml="8"
+			mb="8"
+			spacing={4}
+			listStyleType="circle"
+			{...props}
+		></List>
+	),
+	ol: (props: any) => (
+		<OrderedList as="ol" ml="8" mb="8" spacing={4} {...props}></OrderedList>
+	),
+	li: (props: any) => (
+		<ListItem {...props} color="white">
+			{props.children}
+		</ListItem>
 	),
 };
 
