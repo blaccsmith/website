@@ -34,14 +34,14 @@ export default function Sandbox({ frontMatter, source }: Props): JSX.Element {
 					<Link
 						isExternal
 						href="https://www.markdownguide.org/basic-syntax/"
-						color="brand.purple"
+						color="brand.accent.dark"
 					>
 						Markdown Guide
 					</Link>
 					<Link
 						isExternal
 						href="https://mdxjs.com/"
-						color="brand.purple"
+						color="brand.accent.dark"
 					>
 						MDX Docs
 					</Link>
@@ -59,7 +59,7 @@ export default function Sandbox({ frontMatter, source }: Props): JSX.Element {
 					Update changes
 				</Button>
 			</Box>
-			<Box ml="4">
+			<Box ml="9">
 				<BlogHeader metadata={frontMatter} />
 				<Box as="article" id="content">
 					<MDXRemote {...source} components={components} />
