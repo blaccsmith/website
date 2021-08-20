@@ -25,5 +25,6 @@ module.exports = {
 		semi: ['error', 'always'],
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'react/react-in-jsx-scope': 'off',
+		'react/jsx-no-undef': 'off',
 	},
 };
