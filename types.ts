@@ -1,13 +1,14 @@
+export interface Author {
+	name: string;
+	photo?: string;
+	twitter?: string;
+	github?: string;
+	linkedin?: string;
+}
 export interface BlogMetadata {
 	published: string;
 	title: string;
-	author: {
-		name: string;
-		photo?: string;
-		twitter?: string;
-		github?: string;
-		linkedin?: string;
-	};
+	author: Author;
 	tags?: string;
 	subtitle?: string;
 	thumbnail?: string;
