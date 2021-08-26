@@ -15,18 +15,18 @@ import Image from 'next/image';
 
 export const components = {
 	h2: (props: any) => (
-		<Heading as="h2" fontSize="3xl" mb="3" color="white" {...props} />
+		<Heading {...props} as="h2" fontSize="3xl" mb="3" color="white" />
 	),
 	h3: (props: any) => (
-		<Heading as="h3" fontSize="xl" mb="2" color="white" {...props} />
+		<Heading {...props} as="h3" fontSize="xl" mb="2" color="white" />
 	),
-	p: (props: any) => <Text mb="9" color="white" {...props} />,
+	p: (props: any) => <Text {...props} mb="9" color="white" />,
 	a: (props: any) => (
 		<Link
+			{...props}
 			color="brand.accent.dark"
 			textDecoration="underline"
 			target="_blank"
-			{...props}
 		/>
 	),
 	blockquote: (props: any) => <Blockquote {...props} />,
