@@ -42,21 +42,15 @@ export const components = {
 				overflow="hidden"
 				h="full"
 			>
-				<Image layout="fill" objectFit="cover" {...props} />
+				<Image {...props} layout="fill" objectFit="cover" />
 			</Box>
 		</Center>
 	),
 	ul: (props: any) => (
-		<List
-			ml="8"
-			mb="8"
-			spacing={4}
-			listStyleType="circle"
-			{...props}
-		></List>
+		<List {...props} ml="8" mb="8" spacing={4} listStyleType="circle" />
 	),
 	ol: (props: any) => (
-		<OrderedList as="ol" ml="8" mb="8" spacing={4} {...props}></OrderedList>
+		<OrderedList {...props} as="ol" ml="8" mb="8" spacing={4} />
 	),
 	li: (props: any) => (
 		<ListItem {...props} color="white">
