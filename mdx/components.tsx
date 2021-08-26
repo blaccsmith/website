@@ -9,6 +9,7 @@ import {
 	List,
 	ListItem,
 	OrderedList,
+	Center,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 
@@ -30,17 +31,20 @@ export const components = {
 	),
 	blockquote: (props: any) => <Blockquote {...props} />,
 	img: (props: any) => (
-		<Box
-			my="6"
-			pos="relative"
-			overflow="hidden"
-			rounded="xl"
-			w="auto"
-			maxW="700px"
-			minH="350px"
-		>
-			<Image layout="fill" objectFit="cover" {...props} />
-		</Box>
+		<Center w="full">
+			<Box
+				my="6"
+				w="full"
+				maxW="700px"
+				minH="350px"
+				pos="relative"
+				rounded="xl"
+				overflow="hidden"
+				h="full"
+			>
+				<Image layout="fill" objectFit="cover" {...props} />
+			</Box>
+		</Center>
 	),
 	ul: (props: any) => (
 		<List
