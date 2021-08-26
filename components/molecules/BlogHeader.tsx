@@ -26,7 +26,13 @@ export default function BlogHeader({ metadata }: Props): JSX.Element {
 			<HStack spacing={4}>
 				<HStack spacing={2}>
 					{metadata.author.photo && (
-						<Box w="6" rounded="full" h="6" pos="relative">
+						<Box
+							w="6"
+							rounded="full"
+							overflow="hidden"
+							h="6"
+							pos="relative"
+						>
 							<Image
 								layout="fill"
 								objectFit="cover"
