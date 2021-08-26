@@ -1,10 +1,14 @@
 export interface BlogMetadata {
-	title: string;
-	author: string;
 	published: string;
-	photo?: string;
+	title: string;
+	author: {
+		name: string;
+		photo?: string;
+		twitter?: string;
+		github?: string;
+		linkedin?: string;
+	};
 	tags?: string;
 	subtitle?: string;
-	instagram?: string;
-	twitter?: string;
+	thumbnail?: string;
 }

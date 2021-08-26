@@ -25,17 +25,17 @@ export default function BlogHeader({ metadata }: Props): JSX.Element {
 			</Heading>
 			<HStack spacing={4}>
 				<HStack spacing={2}>
-					{metadata.photo && (
+					{metadata.author.photo && (
 						<Box w="6" rounded="full" h="6" pos="relative">
 							<Image
 								layout="fill"
 								objectFit="cover"
-								src={metadata.photo}
+								src={metadata.author.photo}
 							/>
 						</Box>
 					)}
 					<Text color="white" fontWeight="light">
-						{metadata.author}
+						{metadata.author.name}
 					</Text>
 				</HStack>
 				<HStack spacing={1}>
