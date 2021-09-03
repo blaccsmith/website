@@ -5,7 +5,7 @@ import components from 'mdx/components';
 import { GetStaticProps } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { useRouter } from 'next/dist/client/router';
-import React from 'react';
+import { useState } from 'react';
 import { BlogMetadata } from 'types';
 
 interface Props {
@@ -14,6 +14,28 @@ interface Props {
 }
 export default function Sandbox({ frontMatter, source }: Props): JSX.Element {
 	const router = useRouter();
+	const [isScrollable, setScrollable] = useState(false);
+
+	// Scroll to top on button click
+	const handleScrollToTop = (): void => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
+
+	if (typeof window !== 'undefined') {
+		window.onscroll = (): void => {
+			makeButtonVisible();
+		};
+	}
+
+	// Appear scrollable when the user scrolls down
+	const makeButtonVisible = (): void => {
+		const scrollTop = window.pageYOffset;
+		if (scrollTop > 0) {
+			setScrollable(true);
+		} else {
+			setScrollable(false);
+		}
+	};
 
 	return (
 		<Flex justifyContent="space-evenly" p="6">
@@ -65,6 +87,21 @@ export default function Sandbox({ frontMatter, source }: Props): JSX.Element {
 					<MDXRemote {...source} components={components} />
 				</Box>
 			</Box>
+			<Button
+				display={isScrollable ? 'block' : 'none'}
+				position="fixed"
+				zIndex="99"
+				bottom="10"
+				right="30"
+				border="1px"
+				borderColor="#6200EA"
+				bg="transparent"
+				_hover={{ color: 'white', bg: '#6200EA' }}
+				color="#6200EA"
+				onClick={handleScrollToTop}
+			>
+				Back to Top
+			</Button>
 		</Flex>
 	);
 }
