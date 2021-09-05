@@ -64,7 +64,7 @@ export default function AuthorInfo({ data, show }: Props): JSX.Element {
 				</Stack>
 				<Divider />
 
-				<HStack size="sm" isattached w="full" variant="ghost">
+				<HStack size="sm" w="full" variant="ghost">
 					{data.twitter && (
 						<NextLink href={data.twitter} passHref>
 							<Center
@@ -74,6 +74,8 @@ export default function AuthorInfo({ data, show }: Props): JSX.Element {
 								cursor="pointer"
 								color="brand.white"
 								_hover={{ bg: 'rgba(255,255,255,0.15)' }}
+								_active={{ bg: 'rgba(255,255,255,0.15)' }}
+								_focus={{ bg: 'rgba(255,255,255,0.15)' }}
 								flexGrow={1}
 							>
 								<ImTwitter size={18} />
@@ -89,6 +91,8 @@ export default function AuthorInfo({ data, show }: Props): JSX.Element {
 								cursor="pointer"
 								color="brand.white"
 								_hover={{ bg: 'rgba(255,255,255,0.15)' }}
+								_active={{ bg: 'rgba(255,255,255,0.15)' }}
+								_focus={{ bg: 'rgba(255,255,255,0.15)' }}
 								flexGrow={1}
 							>
 								<ImGithub size={18} />
@@ -104,6 +108,8 @@ export default function AuthorInfo({ data, show }: Props): JSX.Element {
 								cursor="pointer"
 								color="brand.white"
 								_hover={{ bg: 'rgba(255,255,255,0.15)' }}
+								_active={{ bg: 'rgba(255,255,255,0.15)' }}
+								_focus={{ bg: 'rgba(255,255,255,0.15)' }}
 								flexGrow={1}
 							>
 								<ImLinkedin size={18} />

@@ -25,11 +25,11 @@ export default function BlogPost({ frontMatter, source }: Props) {
 	}, []);
 
 	return (
-		<Flex justifyContent="center" p="6">
+		<Flex justifyContent='center' p='6'>
 			<AuthorInfo show={showAuthor} data={frontMatter.author} />
-			<Box ml={{base:'0', lg:"9"}} overflowY="scroll">
+			<Box ml={{base:'0', lg:'9'}} overflowY='scroll'>
 				<BlogHeader metadata={frontMatter} />
-				<Box as="article" id="content" maxW="1000px">
+				<Box as='article' id='content' maxW='1000px'>
 					<MDXRemote {...source} components={components} />
 				</Box>
 			</Box>
