@@ -63,7 +63,7 @@ export default function AuthorInfo({ data, show }: Props): JSX.Element {
 				</Stack>
 				<Divider />
 
-				<HStack size="sm" isAttached w="full" variant="ghost">
+				<HStack size="sm" isattached w="full" variant="ghost">
 					{data.twitter && (
 						<NextLink href={data.twitter} passHref>
 							<Center
