@@ -59,7 +59,7 @@ export default function Sandbox({ frontMatter, source }: Props): JSX.Element {
 					Update changes
 				</Button>
 			</Box>
-			<Box ml="9">
+			<Box ml="6">
 				<BlogHeader metadata={frontMatter} />
 				<Box as="article" id="content" maxW="1000px">
 					<MDXRemote {...source} components={components} />
