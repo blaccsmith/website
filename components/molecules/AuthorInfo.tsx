@@ -27,7 +27,7 @@ export default function AuthorInfo({ data, show }: Props): JSX.Element {
 				minW="fit-content"
 				w="250px"
 				rounded="md"
-				d={{ base: 'none', md: 'block' }}
+				d={{ base: 'none', lg: 'block' }}
 				border="1px"
 				overflow="hidden"
 				borderColor="#424242"
