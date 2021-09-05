@@ -1,0 +1,61 @@
+name: 🐛 Bug Report
+description: Create a bug report to help us improve
+title: '🐛 Bug Report'
+labels: [🐞 Bug]
+assignees:
+    - Garrett1Tolbert
+    - DarrylBrooks97
+body:
+    - type: input
+      id: Description
+      attributes:
+          label: Describe the bug
+          description: A clear and concise description of what the bug is
+      validations:
+          required: true
+
+    - type: textarea
+      id: Reproduce
+      attributes:
+          label: To Reproduce
+          description: Steps to reproduce the behavior
+          render: shell
+          placeholder: |
+              1. Go to '...'
+              2. Click on '....'
+              3. Scroll down to '....'
+              4. See error
+      validations:
+        required: true
+
+    - type: input
+      id: Expected
+      attributes:
+          label: Expected Behavior
+          description: A clear and concise description of what you expected to happen
+      validations:
+          required: true
+
+    - type: markdown
+      id: Screenshots
+      attributes:
+          value: |
+              ### ‼️ If applicable, add screenshots to this issue to help explain your problem
+
+    - type: checkboxes
+      id: Location
+      attributes:
+          label: Where is this happening
+          options:
+              - label: Desktop
+                required: false
+              - label: Mobile
+                required: false
+
+    - type: input
+      id: Context
+      attributes:
+          label: Addtional Context
+          description: Add any other context about the problem here
+      validations:
+          required: false
