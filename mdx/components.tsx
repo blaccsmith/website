@@ -6,12 +6,11 @@ import {
 	Box,
 	Link,
 	Text,
-	List,
+	List,Image,
 	ListItem,
 	OrderedList,
 	Center,
 } from '@chakra-ui/react';
-import Image from 'next/image';
 
 export const components = {
 	h2: (props: any) => (
@@ -31,20 +30,15 @@ export const components = {
 	),
 	blockquote: (props: any) => <Blockquote {...props} />,
 	img: (props: any) => (
-		<Center w="full">
-			<Box
-				my="6"
-				w="full"
-				maxW="700px"
-				minH="350px"
-				pos="relative"
-				rounded="xl"
-				overflow="hidden"
-				h="full"
-			>
-				<Image {...props} layout="fill" objectFit="cover" />
-			</Box>
-		</Center>
+		<Image 
+			{...props} 
+			w="full" 
+			maxW="700px"
+			minH="350px" 
+			layout="fill" 
+			rounded='xl'
+			objectFit="cover" 
+		/>
 	),
 	ul: (props: any) => (
 		<List {...props} ml="8" mb="8" spacing={4} listStyleType="circle" />

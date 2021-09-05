@@ -29,7 +29,7 @@ export default function Blockquote(props: any): JSX.Element {
 			>
 				<MdFormatQuote size={24} />
 			</Center>
-			<Text fontSize="lg" fontWeight="medium">
+			<Text as='span' fontSize="lg" fontWeight="medium">
 				{props.children}
 			</Text>
 		</HStack>
