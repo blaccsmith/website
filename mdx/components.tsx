@@ -33,7 +33,11 @@ export const components = {
 		<Image 
 			{...props} 
 			w="full" 
+			my='16'
 			maxW="700px"
+			alignSelf='center'
+			marginLeft='auto'
+			marginRight='auto'
 			minH="350px" 
 			layout="fill" 
 			rounded='xl'
