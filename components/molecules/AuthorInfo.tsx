@@ -33,12 +33,13 @@ export default function AuthorInfo({ data, show }: Props): JSX.Element {
 				borderColor="#424242"
 			>
 				<Stack spacing={1} alignSelf="center" p="3">
-					<Box
-						w="24"
+					<Center
+						minW="24"
 						rounded="full"
 						overflow="hidden"
-						h="24"
+						minH="24"
 						alignSelf="center"
+						userSelect='none'
 						bg="brand.accent.dark"
 						pos="relative"
 					>
@@ -49,11 +50,11 @@ export default function AuthorInfo({ data, show }: Props): JSX.Element {
 								src={data.photo}
 							/>
 						) : (
-							<Text fontWeight="medium" color="brand.black">
+							<Text fontWeight="medium" fontSize='xl' color="brand.black">
 								{data.name[0]}
 							</Text>
 						)}
-					</Box>
+					</Center>
 					<Text color="brand.white" textAlign="center" fontSize="sm">
 						About the author
 					</Text>

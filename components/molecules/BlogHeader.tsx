@@ -1,4 +1,4 @@
-import { Heading, Box, HStack, Stack, Text } from '@chakra-ui/react';
+import { Heading, Box, HStack, Stack, Text, Center } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { BlogMetadata } from 'types';
 import Image from 'next/image';
@@ -25,21 +25,27 @@ export default function BlogHeader({ metadata }: Props): JSX.Element {
 			</Heading>
 			<HStack spacing={4}>
 				<HStack spacing={2}>
-					{metadata.author.photo && (
-						<Box
-							w="6"
-							rounded="full"
-							overflow="hidden"
-							h="6"
-							pos="relative"
-						>
+					<Center
+						minW="6"
+						rounded="full"
+						overflow="hidden"
+						minH="6"
+						pos="relative"
+						userSelect='none'
+						bg="brand.accent.dark"
+					>
+						{metadata.author.photo ? (
 							<Image
 								layout="fill"
 								objectFit="cover"
 								src={metadata.author.photo}
 							/>
-						</Box>
-					)}
+						) : (
+							<Text fontWeight="medium" fontSize='sm' color="brand.black">
+								{metadata.author.name[0]}
+							</Text>
+						)}
+					</Center>
 					<Text color="white" fontWeight="light">
 						{metadata.author.name}
 					</Text>
