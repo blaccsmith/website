@@ -24,6 +24,7 @@ export default function Sandbox({ frontMatter, source }: Props): JSX.Element {
 				w="fit-content"
 				rounded="md"
 				border="1px"
+				d={{ base: 'none', lg: 'block' }}
 				borderColor="#424242"
 				p="3"
 			>
@@ -59,7 +60,7 @@ export default function Sandbox({ frontMatter, source }: Props): JSX.Element {
 					Update changes
 				</Button>
 			</Box>
-			<Box ml="6">
+			<Box ml={{base:'0', lg:'9'}}>
 				<BlogHeader metadata={frontMatter} />
 				<Box as="article" id="content" maxW="1000px">
 					<MDXRemote {...source} components={components} />
