@@ -37,14 +37,18 @@ In the documentation, user groups, and support channels, you'll see the terms li
 
 It is essential to regularly update your local copy of the repo to ensure you have the latest changes. All of the updates approved by the reviewer and merged into the repo will be part of this update. A good routine is to update your local repo before you create or update any open pull requests.
 
-For example, use Git to update your local repo.
+For example, use Git Bash to update your local repo. Change the current working directory to your local project.
 
-```
+```bash
+/c/github/bc/website (main)
+
+$ git checkout main
 $ git pull upstream main
 ```
-The results shown below are the updates from the website repo added to the local copy.
 
-```txt
+The results shown below is an example of the changes pulled into your local copy.
+
+```bash
 From https://github.com/blaccsmith/website
  * branch            main       -> FETCH_HEAD
 Merge made by the 'recursive' strategy.
