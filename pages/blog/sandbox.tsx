@@ -2,10 +2,11 @@ import BlogHeader from '@/components/molecules/BlogHeader';
 import { Box, Flex, Heading, Button, Stack, Link } from '@chakra-ui/react';
 import { getBlog } from 'mdx';
 import components from 'mdx/components';
+import { ImArrowUp } from 'react-icons/im';
 import { GetStaticProps } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { useRouter } from 'next/dist/client/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BlogMetadata } from 'types';
 
 interface Props {
@@ -16,29 +17,16 @@ export default function Sandbox({ frontMatter, source }: Props): JSX.Element {
 	const router = useRouter();
 	const [isScrollable, setScrollable] = useState(false);
 
-	// Scroll to top on button click
-	const handleScrollToTop = (): void => {
-		window.scrollTo({ top: 0, behavior: 'smooth' });
-	};
-
-	if (typeof window !== 'undefined') {
-		window.onscroll = (): void => {
-			makeButtonVisible();
-		};
-	}
-
-	// Appear scrollable when the user scrolls down
-	const makeButtonVisible = (): void => {
-		const scrollTop = window.pageYOffset;
-		if (scrollTop > 0) {
-			setScrollable(true);
-		} else {
-			setScrollable(false);
+	useEffect(() => {
+		if (window) {
+			window.addEventListener('scroll', () => {
+				setScrollable(window.scrollY > 0);
+			});
 		}
-	};
+	}, []);
 
 	return (
-		<Flex justifyContent="space-evenly" p="6">
+		<Flex justifyContent="space-evenly" p="6" overflowY="scroll">
 			<Box
 				pos="sticky"
 				top="24"
@@ -98,9 +86,9 @@ export default function Sandbox({ frontMatter, source }: Props): JSX.Element {
 				bg="transparent"
 				_hover={{ color: 'white', bg: '#6200EA' }}
 				color="#6200EA"
-				onClick={handleScrollToTop}
+				onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
 			>
-				Back to Top
+				<ImArrowUp />
 			</Button>
 		</Flex>
 	);
