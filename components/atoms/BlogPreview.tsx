@@ -3,6 +3,7 @@ import React from 'react';
 import { BlogMetadata } from 'types';
 import Image from 'next/image';
 import { MdAccessTime } from 'react-icons/md';
+import ProgressiveImage from './ProgressiveImage';
 
 interface Props {
 	data: BlogMetadata;
@@ -19,8 +20,10 @@ export default function BlogPreview({ data, timeAgo }: Props) {
 				rounded="xl"
 				maxW="80"
 			>
-				<Image
+				<ProgressiveImage
 					src={data.thumbnail}
+					minW={320}
+					minH={240}
 					objectFit="cover"
 					layout="fill"
 					alt="Blog thumbnail"
