@@ -6,4 +6,5 @@ export interface BlogMetadata {
 	tags?: string;
 	instagram?: string;
 	twitter?: string;
+	thumbnail: string;
 }
