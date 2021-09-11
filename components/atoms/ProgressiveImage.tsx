@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import Image from 'next/image';
 
