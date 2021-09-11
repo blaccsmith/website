@@ -15,6 +15,7 @@
     "@fontsource/lato": "^4.5.0",
     "@fontsource/montserrat": "^4.5.1",
     "@fontsource/raleway": "^4.5.0",
+    "date-fns": "^2.23.0",
     "framer-motion": "^4",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
@@ -23,7 +24,8 @@
     "next-remote-watch": "^1.0.0",
     "path": "^0.12.7",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-icons": "^4.2.0"
   },
   "devDependencies": {
     "@types/react": "17.0.17",
