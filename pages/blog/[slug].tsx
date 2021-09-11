@@ -7,6 +7,7 @@ import { components } from 'mdx/components';
 import React, { useEffect, useState } from 'react';
 import BlogHeader from '@/components/molecules/BlogHeader';
 import AuthorInfo from '@/components/molecules/AuthorInfo';
+import ScrollToTop from '@/components/atoms/ScrollToTop';
 
 interface Props {
 	source: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -25,14 +26,15 @@ export default function BlogPost({ frontMatter, source }: Props) {
 	}, []);
 
 	return (
-		<Flex justifyContent='center' p='6'>
+		<Flex justifyContent="center" p="6">
 			<AuthorInfo show={showAuthor} data={frontMatter.author} />
-			<Box ml={{base:'0', lg:'9'}} overflowY='scroll'>
+			<Box ml={{ base: '0', lg: '9' }} overflowY="scroll">
 				<BlogHeader metadata={frontMatter} />
-				<Box as='article' id='content' maxW='1000px'>
+				<Box as="article" id="content" maxW="1000px">
 					<MDXRemote {...source} components={components} />
 				</Box>
 			</Box>
+			<ScrollToTop />
 		</Flex>
 	);
 }
