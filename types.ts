@@ -12,4 +12,7 @@ export interface BlogMetadata {
 	tags?: string;
 	subtitle?: string;
 	thumbnail?: string;
+	instagram?: string;
+	twitter?: string;
+	thumbnail: string;
 }
