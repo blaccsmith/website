@@ -1,12 +1,11 @@
+import ScrollToTop from '@/components/atoms/ScrollToTop';
 import BlogHeader from '@/components/molecules/BlogHeader';
 import { Box, Flex, Heading, Button, Stack, Link } from '@chakra-ui/react';
 import { getBlog } from 'mdx';
 import components from 'mdx/components';
-import { ImArrowUp } from 'react-icons/im';
 import { GetStaticProps } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { useRouter } from 'next/dist/client/router';
-import { useState, useEffect } from 'react';
 import { BlogMetadata } from 'types';
 
 interface Props {
@@ -15,15 +14,6 @@ interface Props {
 }
 export default function Sandbox({ frontMatter, source }: Props): JSX.Element {
 	const router = useRouter();
-	const [isScrollable, setScrollable] = useState(false);
-
-	useEffect(() => {
-		if (window) {
-			window.addEventListener('scroll', () => {
-				setScrollable(window.scrollY > 0);
-			});
-		}
-	}, []);
 
 	return (
 		<Flex justifyContent="space-evenly" p="6" overflowY="scroll">
@@ -70,27 +60,13 @@ export default function Sandbox({ frontMatter, source }: Props): JSX.Element {
 					Update changes
 				</Button>
 			</Box>
-			<Box ml={{base:'0', lg:'9'}}>
+			<Box pos="relative" ml={{ base: '0', lg: '9' }}>
 				<BlogHeader metadata={frontMatter} />
 				<Box as="article" id="content" maxW="1000px">
 					<MDXRemote {...source} components={components} />
 				</Box>
 			</Box>
-			<Button
-				display={isScrollable ? 'block' : 'none'}
-				position="fixed"
-				zIndex="99"
-				bottom="10"
-				right="30"
-				border="1px"
-				borderColor="#6200EA"
-				bg="transparent"
-				_hover={{ color: 'white', bg: '#6200EA' }}
-				color="#6200EA"
-				onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-			>
-				<ImArrowUp />
-			</Button>
+			<ScrollToTop />
 		</Flex>
 	);
 }
