@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Redirect output to stderr.
+exec 1>&2
+
+# A check to make sure there are no file mistakes when creating blogs
+
+for file in blogs/*; do
+      if [[ $file != *.mdx ]]       #  Not mdx
+        then
+          echo git commit failed: Please change $file extension to .mdx
+        exit 1
+      fi
+done;
+
