@@ -3,7 +3,7 @@ import { Box, Heading,Grid } from "@chakra-ui/react"
 import { getBlog, getBlogPaths } from "mdx"
 import { GetStaticProps } from "next"
 import { BlogMetadata } from "types"
-import { format, formatDistance } from 'date-fns'
+import { formatDistance } from 'date-fns'
 
 export const getStaticProps: GetStaticProps = async () => {
     const paths = getBlogPaths()
