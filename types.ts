@@ -14,5 +14,4 @@ export interface BlogMetadata {
 	thumbnail?: string;
 	instagram?: string;
 	twitter?: string;
-	thumbnail: string;
 }
