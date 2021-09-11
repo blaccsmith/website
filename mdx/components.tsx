@@ -1,31 +1,59 @@
 /* eslint-disable react/display-name */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Heading, Box, Link, Text } from '@chakra-ui/react';
-import Image from 'next/image';
+import Blockquote from '@/components/atoms/Blockquote';
+import {
+	Heading,
+	Box,
+	Link,
+	Text,
+	List,Image,
+	ListItem,
+	OrderedList,
+	Center,
+} from '@chakra-ui/react';
 
 export const components = {
-	h2: (props: any) => <Heading as="h2" fontSize="3xl" mb="3" {...props} />,
-	h3: (props: any) => <Heading as="h3" fontSize="xl" mb="2" {...props} />,
-	p: (props: any) => <Text mb="9" {...props} />,
+	h2: (props: any) => (
+		<Heading {...props} as="h2" fontSize="3xl" mb="3" color="white" />
+	),
+	h3: (props: any) => (
+		<Heading {...props} as="h3" fontSize="xl" mb="2" color="white" />
+	),
+	p: (props: any) => <Text {...props} mb="9" color="white" />,
 	a: (props: any) => (
 		<Link
-			color="blue"
+			{...props}
+			color="brand.accent.dark"
 			textDecoration="underline"
 			target="_blank"
-			{...props}
 		/>
 	),
+	blockquote: (props: any) => <Blockquote {...props} />,
 	img: (props: any) => (
-		<Box
-			mb="6"
-			pos="relative"
-			overflow="hidden"
-			rounded="xl"
-			w="200px"
-			h="200px"
-		>
-			<Image layout="fill" objectFit="cover" {...props} />
-		</Box>
+		<Image 
+			{...props} 
+			w="full" 
+			my='16'
+			maxW="700px"
+			alignSelf='center'
+			marginLeft='auto'
+			marginRight='auto'
+			minH="350px" 
+			layout="fill" 
+			rounded='xl'
+			objectFit="cover" 
+		/>
+	),
+	ul: (props: any) => (
+		<List {...props} ml="8" mb="8" spacing={4} listStyleType="circle" />
+	),
+	ol: (props: any) => (
+		<OrderedList {...props} as="ol" ml="8" mb="8" spacing={4} />
+	),
+	li: (props: any) => (
+		<ListItem {...props} color="white">
+			{props.children}
+		</ListItem>
 	),
 };
 

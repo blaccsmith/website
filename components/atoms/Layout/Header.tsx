@@ -4,6 +4,7 @@ import Image from 'next/image';
 const HeaderUI = () => {
 	return (
 		<Flex
+			as="header"
 			p="5"
 			pl="6"
 			bg="translucent"
