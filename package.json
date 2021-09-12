@@ -16,6 +16,7 @@
     "@fontsource/montserrat": "^4.5.1",
     "@fontsource/raleway": "^4.5.0",
     "@supabase/supabase-js": "^1.22.5",
+    "axios": "^0.21.4",
     "framer-motion": "^4",
     "fs": "^0.0.1-security",
     "graphql": "^15.5.3",
