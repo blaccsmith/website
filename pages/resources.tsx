@@ -47,7 +47,7 @@ export default function Resources() {
 						_active={{ borderColor: 'brand.purple.400' }}
 						_focus={{ borderColor: 'brand.purple.400' }}
 						onChange={(e) => setRepo(e.target.value)}
-						placeholder="https://github.com/blaccsmith/website"
+						placeholder="Ex: https://github.com/blaccsmith/website"
 					/>
 					<Button
 						color="brand.white"
