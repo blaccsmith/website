@@ -27,7 +27,7 @@ export default function Resources({ resources }: Props) {
 		if (!repo.startsWith('https://github.com')) setIsError(true);
 		else {
 			setIsError(false);
-			const { data } = await axios.post('/api/resources');
+			const { data } = await axios.post('/api/resources', {url:repo});
 
 			toast({
 				title: data.message,
@@ -75,7 +75,7 @@ export default function Resources({ resources }: Props) {
 			{resources.map(({ id, repository }: any) => {
 				return (
 					<Box key={id}>
-						<Box p="3" mb="5" bg="#7B61FF">
+						<Box p="3" mb="5" bg="brand.purple.400">
 							{repository.name}
 						</Box>
 					</Box>
@@ -87,9 +87,7 @@ export default function Resources({ resources }: Props) {
 
 export const getStaticProps: GetStaticProps = async () => {
 	const { resources }: any = await (
-		await axios.get(
-			'https://3000-ivory-pig-9rew31cw.ws-us15.gitpod.io/api/resources'
-		)
+		await axios.get('http://localhost:3000/api/resources')
 	).data;
 	return {
 		props: {

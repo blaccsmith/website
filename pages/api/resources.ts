@@ -7,7 +7,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	switch (req.method) {
 		case 'POST':
 			const created_at: string = new Date(Date.now()).toISOString();
-
+			console.log(req.body);
 			const { error: postError }: PostgrestResponse<any> = await supabase
 				.from('resources')
 				.insert([
