@@ -26,6 +26,10 @@ export const theme = extendTheme({
 			white: '#f5f5f5',
 			black: '#212121',
 			translucent: 'rgba(33, 33, 33, 0.65)',
+			purple: {
+				400: '#7B61FF',
+				500: '#5b44fd',
+			},
 			accent: { light: '#6200EA', dark: '#B388FF' },
 		},
 	},
