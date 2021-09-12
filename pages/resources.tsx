@@ -62,8 +62,8 @@ export default function Resources() {
 						Submit
 					</Button>
 				</HStack>
-				<FormHelperText color="red" d={isError ? 'block' : 'none'}>
-					Not a valid epo
+				<FormHelperText color="red.300" d={isError ? 'block' : 'none'}>
+					Not a valid repo
 				</FormHelperText>
 			</FormControl>
 		</Box>
