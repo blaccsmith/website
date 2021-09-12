@@ -7,3 +7,12 @@ export interface BlogMetadata {
 	instagram?: string;
 	twitter?: string;
 }
+
+export interface Resource {
+	url: string;
+	name: string;
+	description: string;
+	stars: number;
+	topics: string[];
+	updatedAt: string;
+}
