@@ -1,40 +1,42 @@
 {
-  "name": "blacc-website",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@chakra-ui/react": "^1.6.6",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
-    "@fontsource/lato": "^4.5.0",
-    "@fontsource/montserrat": "^4.5.1",
-    "@fontsource/raleway": "^4.5.0",
-    "@supabase/supabase-js": "^1.22.5",
-    "axios": "^0.21.4",
-    "framer-motion": "^4",
-    "fs": "^0.0.1-security",
-    "graphql": "^15.5.3",
-    "gray-matter": "^4.0.3",
-    "next": "11.1.0",
-    "next-mdx-remote": "^3.0.4",
-    "next-remote-watch": "^1.0.0",
-    "path": "^0.12.7",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
-  },
-  "devDependencies": {
-    "@types/react": "17.0.17",
-    "@typescript-eslint/eslint-plugin": "^4.29.1",
-    "@typescript-eslint/parser": "^4.29.1",
-    "eslint": "^7.32.0",
-    "eslint-config-next": "11.1.0",
-    "eslint-plugin-react": "^7.24.0",
-    "typescript": "4.3.5"
-  }
+	"name": "blacc-website",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@chakra-ui/react": "^1.6.6",
+		"@emotion/react": "^11",
+		"@emotion/styled": "^11",
+		"@fontsource/lato": "^4.5.0",
+		"@fontsource/montserrat": "^4.5.1",
+		"@fontsource/raleway": "^4.5.0",
+		"@supabase/supabase-js": "^1.22.5",
+		"axios": "^0.21.4",
+		"framer-motion": "^4",
+		"fs": "^0.0.1-security",
+		"graphql": "^15.5.3",
+		"graphql-request": "^3.5.0",
+		"gray-matter": "^4.0.3",
+		"next": "11.1.0",
+		"next-mdx-remote": "^3.0.4",
+		"next-remote-watch": "^1.0.0",
+		"path": "^0.12.7",
+		"react": "17.0.2",
+		"react-dom": "17.0.2",
+		"vercel": "^23.1.2"
+	},
+	"devDependencies": {
+		"@types/react": "17.0.17",
+		"@typescript-eslint/eslint-plugin": "^4.29.1",
+		"@typescript-eslint/parser": "^4.29.1",
+		"eslint": "^7.32.0",
+		"eslint-config-next": "11.1.0",
+		"eslint-plugin-react": "^7.24.0",
+		"typescript": "4.3.5"
+	}
 }

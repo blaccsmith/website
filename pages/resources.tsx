@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next';
 import {
 	Box,
 	Button,
@@ -11,8 +12,13 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useState } from 'react';
+import resources from './api/resources';
 
-export default function Resources() {
+interface Props {
+	resources: any;
+}
+
+export default function Resources({ resources }: Props) {
 	const [isError, setIsError] = useState(false);
 	const [repo, setRepo] = useState('');
 	const toast = useToast();
@@ -66,6 +72,21 @@ export default function Resources() {
 					Not a valid repo
 				</FormHelperText>
 			</FormControl>
+			{resources.map(({ id, resource }: any) => {
+				return <Box key={id}>{resource.url}</Box>;
+			})}
 		</Box>
 	);
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+	const { data }: any = await axios.get(
+		'https://3000-ivory-pig-9rew31cw.ws-us15.gitpod.io/api/resources'
+	);
+	
+	return {
+		props: {
+			resources: data,
+		},
+	};
+};
