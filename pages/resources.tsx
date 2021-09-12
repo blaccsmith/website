@@ -72,21 +72,28 @@ export default function Resources({ resources }: Props) {
 					Not a valid repo
 				</FormHelperText>
 			</FormControl>
-			{resources.map(({ id, resource }: any) => {
-				return <Box key={id}>{resource.url}</Box>;
+			{resources.map(({ id, repository }: any) => {
+				return (
+					<Box key={id}>
+						<Box p="3" mb="5" bg="#7B61FF">
+							{repository.name}
+						</Box>
+					</Box>
+				);
 			})}
 		</Box>
 	);
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const { data }: any = await axios.get(
-		'https://3000-ivory-pig-9rew31cw.ws-us15.gitpod.io/api/resources'
-	);
-	
+	const { resources }: any = await (
+		await axios.get(
+			'https://3000-ivory-pig-9rew31cw.ws-us15.gitpod.io/api/resources'
+		)
+	).data;
 	return {
 		props: {
-			resources: data,
+			resources,
 		},
 	};
 };

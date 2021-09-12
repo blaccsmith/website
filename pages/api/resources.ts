@@ -50,7 +50,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				);
 			});
 			const resources = await Promise.all(unresolvedResources);
-
 			res.status(200).json({ resources });
 			break;
 		default:
