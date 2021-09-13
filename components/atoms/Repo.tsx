@@ -27,7 +27,7 @@ export default function Repo({ data, isLoaded }: Props) {
 					spacing={3}
 					border="1px"
 					h="fit-content"
-					borderColor="#212121"
+					borderColor="#555"
 					transition="all .2s"
 					_hover={{ borderColor: 'brand.purple.400' }}
 					_focus={{ borderColor: 'brand.purple.400' }}

@@ -66,7 +66,7 @@ export default function Resources() {
 			<SlideFade in={!loading} offsetY="20px">
 				<Box
 					p="3"
-					bg="#222"
+					bg='#292929'
 					rounded="xl"
 					justifyContent="space-between"
 					alignItems="center"
@@ -80,7 +80,7 @@ export default function Resources() {
 								value={repo}
 								type="text"
 								color="brand.white"
-								bg="#333"
+								bg="#353535"
 								borderColor="transparent"
 								_hover={{ borderColor: 'brand.purple.400' }}
 								_active={{ borderColor: 'brand.purple.400' }}
