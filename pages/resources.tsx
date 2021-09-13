@@ -52,7 +52,7 @@ export default function Resources() {
 	return (
 		<Box
 			minHeight="calc(100vh - 218px)"
-			p={{ base: '6', md: '16' }}
+			p={{ base: '3', md: '16' }}
 			pos="relative"
 		>
 			<Heading as="h1" color="brand.white" fontSize="4xl" mb="12">

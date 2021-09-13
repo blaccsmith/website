@@ -16,7 +16,10 @@ export default function Repo({ data, isLoaded }: Props) {
 		<Link passHref href={data.url}>
 			<Skeleton
 				as="a"
+				rounded="lg"
 				target="_blank"
+				startColor="#222"
+				endColor="#333"
 				objectFit="cover"
 				isLoaded={isLoaded}
 			>
