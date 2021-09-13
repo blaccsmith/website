@@ -24,6 +24,7 @@ export const theme = extendTheme({
 	colors: {
 		brand: {
 			white: '#f5f5f5',
+			offWhite: '#eeeeee',
 			black: '#212121',
 			translucent: 'rgba(33, 33, 33, 0.65)',
 			purple: {
