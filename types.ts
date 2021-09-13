@@ -20,5 +20,6 @@ export interface Repository {
 			}
 		];
 	};
+	openGraphImageUrl: string;
 	updatedAt: string;
 }

@@ -14,6 +14,7 @@ export const reposQuery = gql`
 					}
 				}
 			}
+			openGraphImageUrl
 			updatedAt
 		}
 	}
