@@ -8,5 +8,6 @@ module.exports = {
 			'repository-images.githubusercontent.com',
 		],
 	},
+	extends: ['plugin:@next/next/recommended'],
 	reactStrictMode: true,
 };

@@ -7,7 +7,7 @@ interface Props {
 
 export default function Layout({ children }: Props): JSX.Element {
 	return (
-		<Box w="100vw" minH="100vh" bg="black" pos="relative">
+		<Box w="100vw" minH="100vh" bg="brand.black" pos="relative">
 			{children}
 		</Box>
 	);
