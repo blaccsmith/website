@@ -8,11 +8,17 @@ export interface BlogMetadata {
 	twitter?: string;
 }
 
-export interface Resource {
+export interface Repository {
 	url: string;
 	name: string;
 	description: string;
-	stars: number;
-	topics: string[];
+	stargazerCount: number;
+	repositoryTopics: {
+		nodes: [
+			{
+				topic: { name: string };
+			}
+		];
+	};
 	updatedAt: string;
 }

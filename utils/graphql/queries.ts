@@ -13,7 +13,6 @@ export const reposQuery = gql`
 						name
 					}
 				}
-				totalCount
 			}
 			updatedAt
 		}
