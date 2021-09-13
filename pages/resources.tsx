@@ -10,15 +10,18 @@ import {
 	Input,
 	useToast,
 	SlideFade,
+	HStack,
 } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Repo from '@/components/atoms/Repo';
+import { Repository } from 'types';
 
 export default function Resources() {
 	const toast = useToast();
 	const [repo, setRepo] = useState('');
-	const [repos, setRepos] = useState([]);
+	const [repos, setRepos] = useState<{ repository: Repository }[]>([]);
+	const [tags, setTags] = useState<string[]>([]);
 	const [loading, setLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
 
@@ -40,7 +43,6 @@ export default function Resources() {
 	const fetchData = async () => {
 		setLoading(true);
 		const { data } = await axios.get('/api/resources');
-		console.log(data.resources);
 		setRepos(data.resources);
 		setLoading(false);
 	};
@@ -49,16 +51,62 @@ export default function Resources() {
 		fetchData();
 	}, []);
 
+	useEffect(() => {
+		if (repos.length) {
+			const temp: string[] = [];
+			repos.forEach(({ repository }: { repository: Repository }) => {
+				temp.push(
+					...repository.repositoryTopics.nodes.map(
+						(el) => el.topic.name
+					)
+				);
+			});
+			setTags(Array.from(new Set(temp)));
+		}
+	}, [repos]);
+
 	return (
 		<Box
 			minHeight="calc(100vh - 218px)"
 			p={{ base: '3', md: '16' }}
 			pos="relative"
 		>
-			<Heading as="h1" color="brand.white" fontSize="4xl" mb="12">
+			<Heading as="h1" color="brand.white" fontSize="4xl">
 				Resources
 			</Heading>
-			<Grid mb="12" rowGap="6" columnGap="3" templateColumns="1fr 1fr">
+			<HStack
+				w="full"
+				mt="4"
+				overflowY="hidden"
+				overflowX="scroll"
+				css={{
+					'&::-webkit-scrollbar': { display: 'none' },
+				}}
+			>
+				{tags.map((el) => (
+					<Text
+						key={el}
+						minW="max-content"
+						py="1"
+						px="2"
+						rounded="md"
+						fontSize="sm"
+						bg="#333"
+						userSelect="none"
+						cursor="pointer"
+						color="brand.offWhite"
+						transition="all .2s"
+						_hover={{
+							borderColor: 'transparent',
+							bg: 'brand.purple.400',
+						}}
+					>
+						{el}
+					</Text>
+				))}
+			</HStack>
+
+			<Grid my="12" rowGap="6" columnGap="3" templateColumns="1fr 1fr">
 				{repos.map(({ repository }, idx) => (
 					<Repo key={idx} data={repository} isLoaded={!loading} />
 				))}
