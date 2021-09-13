@@ -66,7 +66,7 @@ export default function Resources() {
 			<SlideFade in={!loading} offsetY="20px">
 				<Box
 					p="3"
-					bg='#292929'
+					bg="#292929"
 					rounded="xl"
 					justifyContent="space-between"
 					alignItems="center"
