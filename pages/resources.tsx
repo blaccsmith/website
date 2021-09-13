@@ -3,21 +3,17 @@ import {
 	Button,
 	FormControl,
 	FormHelperText,
-	FormLabel,
 	Grid,
+	Text,
 	Heading,
-	HStack,
+	Flex,
 	Input,
 	useToast,
+	SlideFade,
 } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Repo from '@/components/atoms/Repo';
-import { Repository } from 'types';
-
-interface Props {
-	resources: any;
-}
 
 export default function Resources() {
 	const toast = useToast();
@@ -54,44 +50,69 @@ export default function Resources() {
 	}, []);
 
 	return (
-		<Box minHeight="calc(100vh - 218px)" p={{ base: '6', lg: '16' }}>
+		<Box
+			minHeight="calc(100vh - 218px)"
+			p={{ base: '6', md: '16' }}
+			pos="relative"
+		>
 			<Heading as="h1" color="brand.white" fontSize="4xl" mb="12">
 				Resources
 			</Heading>
-			<FormControl id="Repo" mb="12">
-				<FormLabel color="brand.white">Paste a Repo url</FormLabel>
-				<HStack>
-					<Input
-						value={repo}
-						type="text"
-						color="brand.white"
-						_active={{ borderColor: 'brand.purple.400' }}
-						_focus={{ borderColor: 'brand.purple.400' }}
-						onChange={(e) => setRepo(e.target.value)}
-						placeholder="Ex: https://github.com/blaccsmith/website"
-					/>
-					<Button
-						color="brand.white"
-						px="12"
-						transition="all .2s"
-						onClick={handleClick}
-						bgGradient="linear(to-r, brand.purple.400, brand.purple.500)"
-						_hover={{}}
-						_active={{}}
-						_focus={{}}
-					>
-						Submit
-					</Button>
-				</HStack>
-				<FormHelperText color="red.300" d={isError ? 'block' : 'none'}>
-					Not a valid repo
-				</FormHelperText>
-			</FormControl>
-			<Grid rowGap="6" columnGap="3" templateColumns="1fr 1fr">
+			<Grid mb="12" rowGap="6" columnGap="3" templateColumns="1fr 1fr">
 				{repos.map(({ repository }, idx) => (
 					<Repo key={idx} data={repository} isLoaded={!loading} />
 				))}
 			</Grid>
+			<SlideFade in={!loading} offsetY="20px">
+				<Box
+					p="3"
+					bg="#222"
+					rounded="xl"
+					justifyContent="space-between"
+					alignItems="center"
+				>
+					<Text color="brand.offWhite" mb="2">
+						Have a repo you want others to know about? Let us know.
+					</Text>
+					<FormControl id="Repo">
+						<Flex flexDir={{ base: 'column', md: 'row' }}>
+							<Input
+								value={repo}
+								type="text"
+								color="brand.white"
+								bg="#333"
+								borderColor="transparent"
+								_hover={{ borderColor: 'brand.purple.400' }}
+								_active={{ borderColor: 'brand.purple.400' }}
+								_focus={{ borderColor: 'brand.purple.400' }}
+								onChange={(e) => setRepo(e.target.value)}
+								placeholder="Ex: https://github.com/blaccsmith/website"
+							/>
+							<Button
+								color="brand.white"
+								px="12"
+								mt={{ base: '2', md: '0' }}
+								ml={{ base: '0', md: '2' }}
+								transition="all .2s"
+								onClick={handleClick}
+								bgGradient="linear(to-r, brand.purple.400, brand.purple.500)"
+								_hover={{}}
+								_active={{}}
+								_focus={{}}
+							>
+								Submit
+							</Button>
+						</Flex>
+						<FormHelperText
+							color={isError ? 'red.300' : 'brand.white'}
+						>
+							{isError
+								? 'Not a valid repo'
+								: 'Paste the repo url'}
+						</FormHelperText>
+					</FormControl>
+				</Box>
+			</SlideFade>
 		</Box>
 	);
 }
