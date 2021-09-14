@@ -20,10 +20,23 @@ import { Repository } from 'types';
 export default function Resources() {
 	const toast = useToast();
 	const [repo, setRepo] = useState('');
+	const [topic, setTopic] = useState('');
 	const [repos, setRepos] = useState<{ repository: Repository }[]>([]);
 	const [tags, setTags] = useState<string[]>([]);
 	const [loading, setLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
+
+	const filteredTags = tags.filter((el) => el === topic);
+	const filteredRepos = repos.filter(({ repository }) =>
+		repository.repositoryTopics.nodes.some((el) => el.topic.name === topic)
+	);
+
+	const handleTagClick = (tag: string) => {
+		if (topic === tag) setTopic('');
+		else {
+			setTopic(tag);
+		}
+	};
 
 	const handleClick = async () => {
 		if (!repo.startsWith('https://github.com')) setIsError(true);
@@ -83,7 +96,7 @@ export default function Resources() {
 					'&::-webkit-scrollbar': { display: 'none' },
 				}}
 			>
-				{tags.map((el) => (
+				{(topic ? filteredTags : tags).map((el) => (
 					<Text
 						key={el}
 						minW="max-content"
@@ -96,6 +109,7 @@ export default function Resources() {
 						cursor="pointer"
 						color="brand.offWhite"
 						transition="all .2s"
+						onClick={() => handleTagClick(el)}
 						_hover={{
 							borderColor: 'transparent',
 							bg: 'brand.purple.400',
@@ -105,9 +119,8 @@ export default function Resources() {
 					</Text>
 				))}
 			</HStack>
-
 			<Grid my="12" rowGap="6" columnGap="3" templateColumns="1fr 1fr">
-				{repos.map(({ repository }, idx) => (
+				{(topic ? filteredRepos : repos).map(({ repository }, idx) => (
 					<Repo key={idx} data={repository} isLoaded={!loading} />
 				))}
 			</Grid>
