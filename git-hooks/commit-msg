@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+INPUT_FILE=$1
+START_LINE=`head -n1 $INPUT_FILE`
+
+# Commit Conventions
+FIX="(fix): "
+FEAT="(feat): "
+CHORE="(chore): "
+REFACTOR="(refactor): "
+DOCS="(docs): "
+
+if ! [[ "$START_LINE" =~ $FIX ]] &&
+   ! [[ "$START_LINE" =~ $FEAT ]] &&
+   ! [[ "$START_LINE" =~ $CHORE ]] &&
+   ! [[ "$START_LINE" =~ $REFACTOR ]] &&
+   ! [[ "$START_LINE" =~ $DOCS ]]; 
+then
+  echo "failed commit: Commits should follow \"[fix|feat|chore|refactor|docs]: commit message\""
+  exit 1
+fi
+
+
