@@ -16,6 +16,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Repo from '@/components/atoms/Repo';
 import { Repository } from 'types';
+import RepoComments from '@/components/molecules/RepoComments';
 
 export default function Resources() {
 	const toast = useToast();
@@ -25,6 +26,7 @@ export default function Resources() {
 	const [tags, setTags] = useState<string[]>([]);
 	const [loading, setLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
+	const [showComments, setShowComments] = useState(false);
 
 	const filteredTags = tags.filter((el) => el === topic);
 	const filteredRepos = repos.filter(({ repository }) =>
@@ -32,10 +34,7 @@ export default function Resources() {
 	);
 
 	const handleTagClick = (tag: string) => {
-		if (topic === tag) setTopic('');
-		else {
-			setTopic(tag);
-		}
+		setTopic(topic === tag ? '' : tag);
 	};
 
 	const handleClick = async () => {
@@ -84,6 +83,10 @@ export default function Resources() {
 			p={{ base: '3', md: '16' }}
 			pos="relative"
 		>
+			<RepoComments
+				show={showComments}
+				handleClose={() => setShowComments(false)}
+			/>
 			<Heading as="h1" color="brand.white" fontSize="4xl">
 				Resources
 			</Heading>
@@ -121,7 +124,12 @@ export default function Resources() {
 			</HStack>
 			<Grid my="12" rowGap="6" columnGap="3" templateColumns="1fr 1fr">
 				{(topic ? filteredRepos : repos).map(({ repository }, idx) => (
-					<Repo key={idx} data={repository} isLoaded={!loading} />
+					<Repo
+						key={idx}
+						data={repository}
+						isLoaded={!loading}
+						handleClick={(url) => setShowComments(Boolean(url))}
+					/>
 				))}
 			</Grid>
 			<SlideFade in={!loading} offsetY="20px">

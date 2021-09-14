@@ -19,9 +19,10 @@ import { formatDistance } from 'date-fns';
 interface Props {
 	isLoaded: boolean;
 	data: Repository;
+	handleClick: (url: string) => void;
 }
 
-export default function Repo({ data, isLoaded }: Props) {
+export default function Repo({ data, isLoaded, handleClick }: Props) {
 	const hasComments = data.name.length % 2 === 0;
 	const timeAgo = formatDistance(new Date(data.updatedAt), new Date(), {
 		addSuffix: true,
@@ -135,7 +136,7 @@ export default function Repo({ data, isLoaded }: Props) {
 					d={hasComments ? 'flex' : 'none'}
 					alignItems="center"
 					color="brand.offWhite"
-					onClick={() => alert()}
+					onClick={() => handleClick(data.url)}
 				>
 					<HStack>
 						<MdPeople size={18} />
