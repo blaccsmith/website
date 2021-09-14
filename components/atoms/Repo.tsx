@@ -53,11 +53,12 @@ export default function Repo({ data, isLoaded }: Props) {
 							justifyContent="space-between"
 							alignItems="center"
 						>
-							<HStack>
+							<Flex>
 								<Box
 									pos="relative"
 									h="6"
 									w="6"
+									d={{ base: 'none', md: 'block' }}
 									rounded="full"
 									overflow="hidden"
 								>
@@ -66,10 +67,14 @@ export default function Repo({ data, isLoaded }: Props) {
 										layout="fill"
 									/>
 								</Box>
-								<Text color="brand.white" fontWeight="medium">
+								<Text
+									ml={{ base: '0', md: '2' }}
+									color="brand.white"
+									fontWeight="medium"
+								>
 									{data.name}
 								</Text>
-							</HStack>
+							</Flex>
 							<HStack
 								px="3"
 								py="1"
@@ -80,7 +85,10 @@ export default function Repo({ data, isLoaded }: Props) {
 								bgGradient="linear(to-r, brand.purple.400, brand.purple.500)"
 							>
 								<MdStarBorder size={16} />
-								<Text fontWeight="medium" fontSize="sm">
+								<Text
+									fontWeight="medium"
+									fontSize={{ base: 'xs', md: 'sm' }}
+								>
 									{convertNum(data.stargazerCount)}
 								</Text>
 							</HStack>
