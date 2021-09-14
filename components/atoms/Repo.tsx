@@ -74,7 +74,7 @@ export default function Repo({ data, isLoaded }: Props) {
 										color="brand.white"
 										fontWeight="medium"
 									>
-										{data.name} - {hasComments.toString()}
+										{data.name}
 									</Text>
 								</Flex>
 								<HStack
