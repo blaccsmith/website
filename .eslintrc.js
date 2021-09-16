@@ -20,14 +20,12 @@ module.exports = {
 	},
 	plugins: ['react', '@typescript-eslint'],
 	rules: {
-		indent: 'off',
+		indent: ['error', 'tab'],
 		'linebreak-style': ['error', 'unix'],
 		quotes: ['error', 'single'],
 		semi: ['error', 'always'],
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'react/react-in-jsx-scope': 'off',
 		'react/jsx-no-undef': 'off',
-		'no-case-declarations': 'off',
-		'@typescript-eslint/no-explicit-any': 'off',
 	},
 };

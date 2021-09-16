@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-case-declarations */
+/* eslint-disable indent */
 import type { NextApiRequest, NextApiResponse } from 'next';
 import GraphQL from '@/utils/graphql';
 import { reposQuery } from '@/utils/graphql/queries';

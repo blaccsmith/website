@@ -33,11 +33,13 @@ export default function RepoComments({ show, data, handleClose }: Props) {
 
 	useEffect(() => {
 		show ? onOpen() : onClose();
-	}, [show, onClose, onOpen]);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [show]);
 
 	useEffect(() => {
 		!isOpen && handleClose();
-	}, [isOpen, handleClose]);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isOpen]);
 
 	const handleSubmit = () => {
 		if (!comment) return;
