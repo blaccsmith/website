@@ -83,6 +83,8 @@ export default function Resources() {
 			<HStack
 				w="full"
 				mt="4"
+				// bg="red"
+				minH="27px"
 				overflowY="hidden"
 				overflowX="scroll"
 				css={{
@@ -114,7 +116,7 @@ export default function Resources() {
 			</HStack>
 			<Grid my="12" rowGap="6" columnGap="3" templateColumns="1fr 1fr">
 				{(topic ? filteredRepos : repos)?.map(({ repository }, idx) => (
-					<Repo key={idx} data={repository} isLoaded={!loading} />
+					<Repo key={idx} data={repository} />
 				))}
 			</Grid>
 			<SlideFade in={!loading} offsetY="20px">
