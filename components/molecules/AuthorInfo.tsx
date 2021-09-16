@@ -39,18 +39,23 @@ export default function AuthorInfo({ data, show }: Props): JSX.Element {
 						overflow="hidden"
 						minH="24"
 						alignSelf="center"
-						userSelect='none'
+						userSelect="none"
 						bg="brand.accent.dark"
 						pos="relative"
 					>
 						{data.photo ? (
 							<Image
+								alt="author's photo"
 								layout="fill"
 								objectFit="cover"
 								src={data.photo}
 							/>
 						) : (
-							<Text fontWeight="medium" fontSize='xl' color="brand.black">
+							<Text
+								fontWeight="medium"
+								fontSize="xl"
+								color="brand.black"
+							>
 								{data.name[0]}
 							</Text>
 						)}

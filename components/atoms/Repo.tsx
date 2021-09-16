@@ -73,6 +73,7 @@ export default function Repo({ data, isLoaded }: Props) {
 											overflow="hidden"
 										>
 											<Image
+												alt="repo image"
 												src={data.openGraphImageUrl}
 												layout="fill"
 											/>

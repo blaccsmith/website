@@ -13,10 +13,7 @@ import {
 	HStack,
 	Input,
 	Button,
-	Flex,
 	FormControl,
-	FormHelperText,
-	Stack,
 } from '@chakra-ui/react';
 import React from 'react';
 import { useState } from 'react';
@@ -36,11 +33,11 @@ export default function RepoComments({ show, data, handleClose }: Props) {
 
 	useEffect(() => {
 		show ? onOpen() : onClose();
-	}, [show]);
+	}, [show, onClose, onOpen]);
 
 	useEffect(() => {
 		!isOpen && handleClose();
-	}, [isOpen]);
+	}, [isOpen, handleClose]);
 
 	const handleSubmit = () => {
 		if (!comment) return;
@@ -60,9 +57,17 @@ export default function RepoComments({ show, data, handleClose }: Props) {
 				</DrawerHeader>
 				<Divider />
 				<DrawerBody pt="4">
-					<Text py="2" px="4" rounded="full" color="brand.offWhite">
-						hi
-					</Text>
+					{comments.map((el, idx) => (
+						<Text
+							key={idx}
+							py="2"
+							px="4"
+							rounded="full"
+							color="brand.offWhite"
+						>
+							hi
+						</Text>
+					))}
 				</DrawerBody>
 				<DrawerFooter>
 					<FormControl id="Repo">

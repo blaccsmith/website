@@ -15,7 +15,7 @@ const HeaderUI = () => {
 			backdropFilter="blur(10px)"
 			justifyContent="space-between"
 		>
-			<Image width={32} height={32} src="/logo-light.png" />
+			<Image alt="logo" width={32} height={32} src="/logo-light.png" />
 		</Flex>
 	);
 };
