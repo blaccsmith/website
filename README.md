@@ -49,7 +49,7 @@ Garrett Tolbert
 
 **Founder**
 <br>
-[Twitter](https://twitter.com/g_arrett97)/[Instgram](https://instagram.com/g_arrett97)/[Linkedin](https://www.linkedin.com/in/garretttolbert)
+[Twitter](https://twitter.com/gt_codes)/[Instgram](https://instagram.com/g_arrett97)/[Linkedin](https://www.linkedin.com/in/garretttolbert)
 
 <br>
 <br>
