@@ -16,18 +16,18 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Repo from '@/components/atoms/Repo';
 import { Repository } from 'types';
+import useResources from 'hooks/useResources';
 
 export default function Resources() {
 	const toast = useToast();
 	const [repo, setRepo] = useState('');
 	const [topic, setTopic] = useState('');
-	const [repos, setRepos] = useState<{ repository: Repository }[]>([]);
 	const [tags, setTags] = useState<string[]>([]);
-	const [loading, setLoading] = useState(false);
-	const [isError, setIsError] = useState(false);
+	const [isInputError, setIsInputError] = useState(false);
+	const { resources: repos, error, loading } = useResources();
 
 	const filteredTags = tags.filter((el) => el === topic);
-	const filteredRepos = repos.filter(({ repository }) =>
+	const filteredRepos = repos?.filter(({ repository }) =>
 		repository.repositoryTopics.nodes.some((el) => el.topic.name === topic)
 	);
 
@@ -36,9 +36,9 @@ export default function Resources() {
 	};
 
 	const handleClick = async () => {
-		if (!repo.startsWith('https://github.com')) setIsError(true);
+		if (!repo.startsWith('https://github.com')) setIsInputError(true);
 		else {
-			setIsError(false);
+			setIsInputError(false);
 			const { data } = await axios.post('/api/resources', { url: repo });
 
 			toast({
@@ -50,19 +50,8 @@ export default function Resources() {
 		}
 	};
 
-	const fetchData = async () => {
-		setLoading(true);
-		const { data } = await axios.get('/api/resources');
-		setRepos(data.resources);
-		setLoading(false);
-	};
-
 	useEffect(() => {
-		fetchData();
-	}, []);
-
-	useEffect(() => {
-		if (repos.length) {
+		if (repos?.length) {
 			const temp: string[] = [];
 			repos.forEach(({ repository }: { repository: Repository }) => {
 				temp.push(
@@ -74,6 +63,13 @@ export default function Resources() {
 			setTags(Array.from(new Set(temp)));
 		}
 	}, [repos]);
+
+	if (error)
+		return (
+			<Text p="16" color="brand.accent.dark">
+				Unable to fetch resources
+			</Text>
+		);
 
 	return (
 		<Box
@@ -117,7 +113,7 @@ export default function Resources() {
 				))}
 			</HStack>
 			<Grid my="12" rowGap="6" columnGap="3" templateColumns="1fr 1fr">
-				{(topic ? filteredRepos : repos).map(({ repository }, idx) => (
+				{(topic ? filteredRepos : repos)?.map(({ repository }, idx) => (
 					<Repo key={idx} data={repository} isLoaded={!loading} />
 				))}
 			</Grid>
@@ -162,9 +158,9 @@ export default function Resources() {
 							</Button>
 						</Flex>
 						<FormHelperText
-							color={isError ? 'red.300' : 'brand.white'}
+							color={isInputError ? 'red.300' : 'brand.white'}
 						>
-							{isError
+							{isInputError
 								? 'Not a valid repo'
 								: 'Paste the repo url'}
 						</FormHelperText>

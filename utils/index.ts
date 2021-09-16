@@ -1,7 +1,11 @@
+import axios from 'axios';
+
+export const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+
 export const convertNum = (num: number) => {
 	if (num < 1000) return num;
 
-	var si = [
+	const si = [
 		{ v: 1e3, s: 'K' },
 		{ v: 1e6, s: 'M' },
 		{ v: 1e9, s: 'B' },
@@ -9,7 +13,7 @@ export const convertNum = (num: number) => {
 		{ v: 1e15, s: 'P' },
 		{ v: 1e18, s: 'E' },
 	];
-	var i;
+	let i;
 	for (i = si.length - 1; i > 0; i--) {
 		if (num >= si[i].v) {
 			break;
