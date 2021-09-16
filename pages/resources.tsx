@@ -67,7 +67,7 @@ export default function Resources() {
 	if (error)
 		return (
 			<Text p="16" color="brand.accent.dark">
-				Unable to fetch resources: {error}
+				Unable to fetch resources: {error.toString()}
 			</Text>
 		);
 
