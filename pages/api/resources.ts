@@ -3,7 +3,10 @@ import GraphQL from '@/utils/graphql';
 import { reposQuery } from '@/utils/graphql/queries';
 import Supabase from '@/utils/supabase';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async function handler(
+	req: NextApiRequest,
+	res: NextApiResponse
+) {
 	const supabase = new Supabase();
 
 	switch (req.method) {
@@ -37,4 +40,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		default:
 			res.status(400).json({ message: 'Not found' });
 	}
-};
+}
