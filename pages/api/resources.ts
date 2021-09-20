@@ -5,6 +5,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import GraphQL from '@/utils/graphql';
 import { reposQuery } from '@/utils/graphql/queries';
 import Supabase from '@/utils/supabase';
+import axios from 'axios';
 
 export default async function handler(
 	req: NextApiRequest,
@@ -14,14 +15,23 @@ export default async function handler(
 
 	switch (req.method) {
 		case 'POST':
-			const created_at: string = new Date(Date.now()).toISOString();
-			const { error } = await supabase.insert('resources', {
-				created_at: created_at,
-				url: req.body.url,
-			});
+			try {
+				const validRepo = await axios.get(req.body.url);
 
-			if (error) res.status(500).json({ message: error.message });
-			else res.status(201).json({ message: 'Thanks for the submission' });
+				const created_at: string = new Date(Date.now()).toISOString();
+				const { error } = await supabase.insert('resources', {
+					created_at: created_at,
+					url: req.body.url,
+				});
+
+				if (error) res.status(500).json({ message: error.message });
+				else
+					res.status(201).json({
+						message: 'Thanks for the submission',
+					});
+			} catch (error) {
+				res.status(201).json({ error: 'Repo must be private' });
+			}
 			break;
 		case 'GET':
 			const { data, error: err } = await supabase.getAll('resources');

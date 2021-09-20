@@ -42,8 +42,8 @@ export default function Resources() {
 			const { data } = await axios.post('/api/resources', { url: repo });
 
 			toast({
-				title: data.message,
-				status: 'success',
+				title: data.message ?? data.error,
+				status: data?.message ? 'success' : 'error',
 				duration: 4000,
 				isClosable: true,
 			});
