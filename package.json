@@ -16,6 +16,7 @@
     "@fontsource/montserrat": "^4.5.1",
     "@fontsource/raleway": "^4.5.0",
     "date-fns": "^2.23.0",
+    "formik": "^2.2.9",
     "framer-motion": "^4",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",
