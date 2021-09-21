@@ -27,6 +27,11 @@ export const theme = extendTheme({
 			offWhite: '#eeeeee',
 			black: '#212121',
 			translucent: 'rgba(33, 33, 33, 0.65)',
+			purple: {
+				50: '#efe9ff',
+				400: '#7B61FF',
+				500: '#5b44fd',
+			},
 			accent: { light: '#6200EA', dark: '#B388FF' },
 		},
 	},
