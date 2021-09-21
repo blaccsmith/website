@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/layout';
+import { Flex } from '@chakra-ui/layout';
 import { ReactNode } from 'react';
 
 interface Props {
@@ -7,8 +7,8 @@ interface Props {
 
 export default function Layout({ children }: Props): JSX.Element {
 	return (
-		<Box w="100vw" minH="100vh" bg="brand.black" pos="relative">
+		<Flex w="100vw" minH="100vh" bg="brand.black" pos="relative">
 			{children}
-		</Box>
+		</Flex>
 	);
 }

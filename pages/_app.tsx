@@ -15,16 +15,14 @@ import { ChakraProvider } from '@chakra-ui/react';
 import React from 'react';
 import { theme } from '../theme';
 import Layout from '@/components/atoms/Layout';
-import Footer from '@/components/atoms/Layout/Footer';
-import Header from '@/components/atoms/Layout/Header';
+import Sidebar from '@/components/molecules/Sidebar';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<ChakraProvider theme={theme}>
 			<Layout>
-				<Header />
+				<Sidebar />
 				<Component {...pageProps} />
-				<Footer />
 			</Layout>
 		</ChakraProvider>
 	);
