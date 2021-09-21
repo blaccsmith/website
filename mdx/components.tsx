@@ -6,11 +6,38 @@ import {
 	Box,
 	Link,
 	Text,
-	List,Image,
+	List,
+	Image,
 	ListItem,
 	OrderedList,
-	Center,
 } from '@chakra-ui/react';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+
+const CodeBlock = ({ children, className }: any) => {
+	const language = className.replace(/language-/, '');
+
+	return (
+		<Highlight {...defaultProps} code={children} language={language}>
+			{({ className, style, tokens, getLineProps, getTokenProps }) => (
+				<pre
+					className={className}
+					style={{ ...style, padding: '20px' }}
+				>
+					{tokens.map((line, i) => (
+						<div key={i} {...getLineProps({ line, key: i })}>
+							{line.map((token, key) => (
+								<span
+									key={key}
+									{...getTokenProps({ token, key })}
+								/>
+							))}
+						</div>
+					))}
+				</pre>
+			)}
+		</Highlight>
+	);
+};
 
 export const components = {
 	h2: (props: any) => (
@@ -30,18 +57,18 @@ export const components = {
 	),
 	blockquote: (props: any) => <Blockquote {...props} />,
 	img: (props: any) => (
-		<Image 
-			{...props} 
-			w="full" 
-			my='16'
+		<Image
+			{...props}
+			w="full"
+			my="16"
 			maxW="700px"
-			alignSelf='center'
-			marginLeft='auto'
-			marginRight='auto'
-			minH="350px" 
-			layout="fill" 
-			rounded='xl'
-			objectFit="cover" 
+			alignSelf="center"
+			marginLeft="auto"
+			marginRight="auto"
+			minH="350px"
+			layout="fill"
+			rounded="xl"
+			objectFit="cover"
 		/>
 	),
 	ul: (props: any) => (
@@ -55,6 +82,8 @@ export const components = {
 			{props.children}
 		</ListItem>
 	),
+	pre: (props: any) => <Box {...props} />,
+	code: (props: any) => <CodeBlock {...props} />,
 };
 
 export default components;
