@@ -49,7 +49,7 @@ const HomeUI = ({ handleSubmit }: Props) => {
 						console.log({ values });
 					}}
 				>
-					{({ isSubmitting }) => (
+					{() => (
 						<Form>
 							<Field name="lastName">
 								{({ field }: FieldProps) => (
