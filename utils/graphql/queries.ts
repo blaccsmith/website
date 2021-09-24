@@ -1,6 +1,6 @@
 import { gql } from 'graphql-request';
 
-export const reposQuery = gql`
+export const reposQuery = `
 	query repo($name: String!, $owner: String!) {
 		repository(name: $name, owner: $owner) {
 			url

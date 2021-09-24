@@ -16,7 +16,7 @@ export default async function handler(
 	switch (req.method) {
 		case 'POST':
 			try {
-				const validRepo = await axios.get(req.body.url);
+				await axios.get(req.body.url);
 
 				const created_at: string = new Date(Date.now()).toISOString();
 				const { error } = await supabase.insert('resources', {
@@ -30,7 +30,7 @@ export default async function handler(
 						message: 'Thanks for the submission',
 					});
 			} catch (error) {
-				res.status(201).json({ error: 'Repo must be private' });
+				res.status(201).json({ error: 'Repo must be public' });
 			}
 			break;
 		case 'GET':

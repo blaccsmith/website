@@ -1,6 +1,9 @@
-import axios from 'axios';
+import { request } from 'graphql-request';
 
-export const fetcher = (url: string) => axios.get(url).then((res) => res.data);
+const api = 'https://api-git-staging-blacc.vercel.app/api';
+
+export const fetcher = (query: string, variables?: any) =>
+	request(api, query, variables);
 
 export const convertNum = (num: number) => {
 	if (num < 1000) return num;

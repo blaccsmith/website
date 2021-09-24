@@ -16,7 +16,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Repo from '@/components/atoms/Repo';
 import { Repository } from 'types';
-import useResources from 'hooks/useResources';
+import useResources from '@/hooks/useResources';
+import { reposQuery } from '@/utils/graphql/queries';
 
 export default function Resources() {
 	const toast = useToast();
@@ -24,7 +25,11 @@ export default function Resources() {
 	const [topic, setTopic] = useState('');
 	const [tags, setTags] = useState<string[]>([]);
 	const [isInputError, setIsInputError] = useState(false);
-	const { resources: repos, error, loading } = useResources();
+	const {
+		resources: repos,
+		error,
+		loading,
+	} = useResources({ query: reposQuery, url: repo });
 
 	const filteredTags = tags.filter((el) => el === topic);
 	const filteredRepos = repos?.filter(({ repository }) =>
@@ -36,8 +41,10 @@ export default function Resources() {
 	};
 
 	const handleClick = async () => {
-		if (!repo.startsWith('https://github.com')) setIsInputError(true);
-		else {
+		if (!repo.startsWith('https://github.com')) {
+			setIsInputError(true);
+			setRepo('');
+		} else {
 			setIsInputError(false);
 			const { data } = await axios.post('/api/resources', { url: repo });
 
@@ -55,21 +62,16 @@ export default function Resources() {
 			const temp: string[] = [];
 			repos.forEach(({ repository }: { repository: Repository }) => {
 				temp.push(
-					...repository.repositoryTopics.nodes.map(
-						(el) => el.topic.name
-					)
+					...repository.repositoryTopics.nodes.map((el) => el.topic.name)
 				);
 			});
 			setTags(Array.from(new Set(temp)));
 		}
 	}, [repos]);
 
-	if (error)
-		return (
-			<Text p="16" color="brand.accent.dark">
-				Unable to fetch resources: {error.toString()}
-			</Text>
-		);
+	useEffect(() => {
+		error && setIsInputError(true);
+	}, [error]);
 
 	return (
 		<Box
@@ -119,7 +121,7 @@ export default function Resources() {
 					<Repo key={idx} data={repository} />
 				))}
 			</Grid>
-			<SlideFade in={!loading} offsetY="20px">
+			<SlideFade in={loading} offsetY="20px">
 				<Box
 					p="3"
 					bg="#292929"
@@ -159,12 +161,8 @@ export default function Resources() {
 								Submit
 							</Button>
 						</Flex>
-						<FormHelperText
-							color={isInputError ? 'red.300' : 'brand.white'}
-						>
-							{isInputError
-								? 'Not a valid repo'
-								: 'Paste the repo url'}
+						<FormHelperText color={isInputError ? 'red.300' : 'brand.white'}>
+							{isInputError ? 'Not a valid repo' : 'Paste the repo url'}
 						</FormHelperText>
 					</FormControl>
 				</Box>
