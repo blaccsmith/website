@@ -1,9 +1,9 @@
 import { request } from 'graphql-request';
 
-const api = 'https://api-git-staging-blacc.vercel.app/api';
+// const api = 'https://api-git-staging-blacc.vercel.app/api';
+const api = 'https://3000-ivory-smelt-7padaxg2.ws-us18.gitpod.io/api';
 
-export const fetcher = (query: string, variables?: any) =>
-	request(api, query, variables);
+export const fetcher = (query: string) => request(api, query);
 
 export const convertNum = (num: number) => {
 	if (num < 1000) return num;
