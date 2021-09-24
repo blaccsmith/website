@@ -25,15 +25,11 @@ export default function Resources() {
 	const [topic, setTopic] = useState('');
 	const [tags, setTags] = useState<string[]>([]);
 	const [isInputError, setIsInputError] = useState(false);
-	const {
-		resources: repos,
-		error,
-		loading,
-	} = useResources({ query: reposQuery, url: repo });
+	const { repos, error, loading } = useResources({ query: reposQuery });
 
 	const filteredTags = tags.filter((el) => el === topic);
-	const filteredRepos = repos?.filter(({ repository }) =>
-		repository.repositoryTopics.nodes.some((el) => el.topic.name === topic)
+	const filteredRepos = repos?.filter((repo) =>
+		repo.repositoryTopics.nodes.some((el) => el.topic.name === topic)
 	);
 
 	const handleTagClick = (tag: string) => {
@@ -60,9 +56,9 @@ export default function Resources() {
 	useEffect(() => {
 		if (repos?.length) {
 			const temp: string[] = [];
-			repos.forEach(({ repository }: { repository: Repository }) => {
+			repos.forEach((repo: Repository) => {
 				temp.push(
-					...repository.repositoryTopics.nodes.map((el) => el.topic.name)
+					...repo.repositoryTopics.nodes.map((el) => el.topic.name)
 				);
 			});
 			setTags(Array.from(new Set(temp)));
@@ -117,11 +113,11 @@ export default function Resources() {
 				))}
 			</HStack>
 			<Grid my="12" rowGap="6" columnGap="3" templateColumns="1fr 1fr">
-				{(topic ? filteredRepos : repos)?.map(({ repository }, idx) => (
-					<Repo key={idx} data={repository} />
+				{(topic ? filteredRepos : repos)?.map((el, idx) => (
+					<Repo key={idx} data={el} />
 				))}
 			</Grid>
-			<SlideFade in={loading} offsetY="20px">
+			<SlideFade in={!loading} offsetY="20px">
 				<Box
 					p="3"
 					bg="#292929"
@@ -161,8 +157,12 @@ export default function Resources() {
 								Submit
 							</Button>
 						</Flex>
-						<FormHelperText color={isInputError ? 'red.300' : 'brand.white'}>
-							{isInputError ? 'Not a valid repo' : 'Paste the repo url'}
+						<FormHelperText
+							color={isInputError ? 'red.300' : 'brand.white'}
+						>
+							{isInputError
+								? 'Not a valid repo'
+								: 'Paste the repo url'}
 						</FormHelperText>
 					</FormControl>
 				</Box>
