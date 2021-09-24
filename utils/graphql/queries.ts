@@ -1,13 +1,12 @@
-import { gql } from 'graphql-request';
-
 export const reposQuery = `
-	query repo($name: String!, $owner: String!) {
-		repository(name: $name, owner: $owner) {
+	{
+		getRepos {
 			url
 			name
 			description
 			stargazerCount
-			repositoryTopics(first: 3) {
+			stargazerCount
+			repositoryTopics {
 				nodes {
 					topic {
 						name
@@ -17,5 +16,5 @@ export const reposQuery = `
 			openGraphImageUrl
 			updatedAt
 		}
-	}
+	}	
 `;
