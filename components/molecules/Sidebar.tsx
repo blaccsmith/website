@@ -1,14 +1,25 @@
-import { Stack, Link, Center } from '@chakra-ui/react';
+import { Stack, Link, Center, Text, HStack } from '@chakra-ui/react';
 import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import NextLink from 'next/link';
-import { MdInbox, MdMessage } from 'react-icons/md';
+import { useState } from 'react';
+import { MdInbox, MdMessage, MdLastPage } from 'react-icons/md';
 
 export default function Sidebar(): JSX.Element {
 	const router = useRouter();
+	const [showSidebar, setShowSidebar] = useState(false);
 
 	return (
-		<Stack spacing={6} w="20" px="4" pt="16" bg="#383838">
+		<Stack
+			spacing={6}
+			px="4"
+			userSelect="none"
+			pt="16"
+			bg="#383838"
+			overflowX="hidden"
+			transition="all .2s"
+			flex={`0 0 ${showSidebar ? '178.422px' : '80px'}`}
+		>
 			<Link isExternal href="https://blacc.xyz">
 				<Center
 					bg="black"
@@ -27,35 +38,54 @@ export default function Sidebar(): JSX.Element {
 				</Center>
 			</Link>
 			<NextLink passHref href="/">
-				<Center
-					as="a"
-					h="12"
-					w="12"
-					rounded="full"
-					cursor="pointer"
-					transition="all .2s"
-					_hover={{ bg: 'rgba(0,0,0,.3)' }}
-					color="brand.white"
-					opacity={router.asPath === '/' ? 1 : 0.5}
-				>
-					<MdMessage size={24} />
-				</Center>
+				<HStack as="a" spacing={4}>
+					<Center
+						minH="12"
+						minW="12"
+						rounded="full"
+						cursor="pointer"
+						transition="all .2s"
+						_hover={{ bg: 'rgba(0,0,0,.3)' }}
+						color="brand.white"
+						opacity={router.asPath === '/' ? 1 : 0.5}
+					>
+						<MdMessage size={24} />
+					</Center>
+					<Text color="brand.white">Bot</Text>
+				</HStack>
 			</NextLink>
 			<NextLink passHref href="/resources">
-				<Center
-					as="a"
-					h="12"
-					w="12"
-					rounded="full"
-					cursor="pointer"
-					transition="all .2s"
-					_hover={{ bg: 'rgba(0,0,0,.3)' }}
-					color="brand.white"
-					opacity={router.asPath === '/resources' ? 1 : 0.5}
-				>
-					<MdInbox size={24} />
-				</Center>
+				<HStack as="a" spacing={4}>
+					<Center
+						minH="12"
+						minW="12"
+						rounded="full"
+						cursor="pointer"
+						transition="all .2s"
+						_hover={{ bg: 'rgba(0,0,0,.3)' }}
+						color="brand.white"
+						opacity={router.asPath === '/resources' ? 1 : 0.5}
+					>
+						<MdInbox size={24} />
+					</Center>
+					<Text color="brand.white">Resources</Text>
+				</HStack>
 			</NextLink>
+			<Center
+				h="12"
+				w="12"
+				rounded="full"
+				cursor="pointer"
+				transition="all .2s"
+				_hover={{ bg: 'rgba(0,0,0,.3)' }}
+				color="brand.white"
+				pos="absolute"
+				bottom="4"
+				onClick={() => setShowSidebar(!showSidebar)}
+				transform={!showSidebar ? 'rotate(0)' : 'rotate(-180deg)'}
+			>
+				<MdLastPage size={24} />
+			</Center>
 		</Stack>
 	);
 }
