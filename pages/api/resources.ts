@@ -6,51 +6,29 @@ import GraphQL from '@/utils/graphql';
 import { reposQuery } from '@/utils/graphql/queries';
 import Supabase from '@/utils/supabase';
 import axios from 'axios';
+import { api } from '@/utils/index';
+import { reposMutation } from '@/utils/graphql/mutations';
 
 export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	const supabase = new Supabase();
+	if (req.method !== 'POST') {
+		res.status(400).json({ message: 'Invalid request' });
+		return;
+	}
 
-	switch (req.method) {
-		case 'POST':
-			try {
-				await axios.get(req.body.url);
+	try {
+		await axios.get(req.body.url);
 
-				const created_at: string = new Date(Date.now()).toISOString();
-				const { error } = await supabase.insert('resources', {
-					created_at: created_at,
-					url: req.body.url,
-				});
+		const gql = new GraphQL(api);
+		const data = await gql.runQuery({
+			query: reposMutation,
+			variables: { addRepoUrl: req.body.url },
+		});
 
-				if (error) res.status(500).json({ message: error.message });
-				else
-					res.status(201).json({
-						message: 'Thanks for the submission',
-					});
-			} catch (error) {
-				res.status(201).json({ error: 'Repo must be public' });
-			}
-			break;
-		case 'GET':
-			const { data, error: err } = await supabase.getAll('resources');
-
-			if (err) res.status(500).json({ message: err.message });
-
-			const gql = new GraphQL();
-			const promises = (data as any[]).map(async (repo) => {
-				const [, owner, name] = repo.url.substring(8).split('/');
-				return await gql.runQuery({
-					query: reposQuery,
-					variables: { owner, name },
-				});
-			});
-
-			const resources = await Promise.all(promises);
-			res.status(200).json({ resources });
-			break;
-		default:
-			res.status(400).json({ message: 'Not found' });
+		res.status(201).json({ message: data });
+	} catch (error) {
+		res.status(201).json({ error: 'Repo must be public' });
 	}
 }

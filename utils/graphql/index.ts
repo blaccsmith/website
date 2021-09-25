@@ -8,8 +8,10 @@ interface Params {
 
 export default class GraphQL {
 	client;
-	constructor() {
-		this.client = new GraphQLClient('https://api.github.com/graphql');
+	constructor(url?: string) {
+		this.client = new GraphQLClient(
+			url ?? 'https://api.github.com/graphql'
+		);
 	}
 
 	async runQuery({ query, variables, requestHeaders }: Params) {
