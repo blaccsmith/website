@@ -7,7 +7,7 @@ interface Props {
 
 export default function Layout({ children }: Props): JSX.Element {
 	return (
-		<Flex w="100vw" minH="100vh" bg="brand.black" pos="relative">
+		<Flex flexGrow={1} h="100vh" bg="brand.black" pos="relative">
 			{children}
 		</Flex>
 	);
