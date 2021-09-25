@@ -12,7 +12,6 @@ import '@fontsource/raleway/900.css';
 
 import type { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
-import React from 'react';
 import { theme } from '../theme';
 import Layout from '@/components/atoms/Layout';
 import Sidebar from '@/components/molecules/Sidebar';
