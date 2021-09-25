@@ -16,8 +16,6 @@ interface Props {
 export default function useRepos({ query }: Props): ReposResponse {
 	const { data, error } = useSWR(query, fetcher);
 
-	console.log({ data, error });
-
 	return {
 		error,
 		loading: !error && !data,
