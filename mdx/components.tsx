@@ -6,7 +6,8 @@ import {
 	Box,
 	Link,
 	Text,
-	List,Image,
+	List,
+	Image,
 	ListItem,
 	OrderedList,
 	Center,
@@ -30,18 +31,19 @@ export const components = {
 	),
 	blockquote: (props: any) => <Blockquote {...props} />,
 	img: (props: any) => (
-		<Image 
-			{...props} 
-			w="full" 
-			my='16'
+		<Image
+			{...props}
+			w="full"
+			my="16"
+			alt={props.children}
 			maxW="700px"
-			alignSelf='center'
-			marginLeft='auto'
-			marginRight='auto'
-			minH="350px" 
-			layout="fill" 
-			rounded='xl'
-			objectFit="cover" 
+			alignSelf="center"
+			marginLeft="auto"
+			marginRight="auto"
+			minH="350px"
+			layout="fill"
+			rounded="xl"
+			objectFit="cover"
 		/>
 	),
 	ul: (props: any) => (
