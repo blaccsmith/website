@@ -23,6 +23,7 @@ export default function Resources() {
 	const toast = useToast();
 	const [repo, setRepo] = useState('');
 	const [topic, setTopic] = useState('');
+	const [adding, setAdding] = useState(false);
 	const [tags, setTags] = useState<string[]>([]);
 	const [isInputError, setIsInputError] = useState(false);
 	const { repos, error, loading } = useResources({ query: reposQuery });
@@ -39,11 +40,12 @@ export default function Resources() {
 	const handleClick = async () => {
 		if (!repo.startsWith('https://github.com')) {
 			setIsInputError(true);
-			setRepo('');
 		} else {
+			setAdding(true);
 			setIsInputError(false);
 			const { data } = await axios.post('/api/resources', { url: repo });
-
+			setAdding(false);
+			setRepo('');
 			toast({
 				title: data?.message?.addRepo ?? data.error,
 				status: data?.message ? 'success' : 'error',
@@ -145,6 +147,8 @@ export default function Resources() {
 							<Button
 								color="brand.white"
 								px="12"
+								isLoading={adding}
+								loadingText="Submitting"
 								mt={{ base: '2', md: '0' }}
 								ml={{ base: '0', md: '2' }}
 								transition="all .2s"
