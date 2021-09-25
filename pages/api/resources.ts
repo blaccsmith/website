@@ -3,8 +3,6 @@
 /* eslint-disable indent */
 import type { NextApiRequest, NextApiResponse } from 'next';
 import GraphQL from '@/utils/graphql';
-import { reposQuery } from '@/utils/graphql/queries';
-import Supabase from '@/utils/supabase';
 import axios from 'axios';
 import { api } from '@/utils/index';
 import { reposMutation } from '@/utils/graphql/mutations';
@@ -22,13 +20,21 @@ export default async function handler(
 		await axios.get(req.body.url);
 
 		const gql = new GraphQL(api);
+
 		const data = await gql.runQuery({
 			query: reposMutation,
 			variables: { addRepoUrl: req.body.url },
 		});
 
 		res.status(201).json({ message: data });
-	} catch (error) {
-		res.status(201).json({ error: 'Repo must be public' });
+	} catch (error: any) {
+		console.log(error);
+
+		if ((error.toJSON().message as string).endsWith('404')) {
+			res.status(201).json({ error: 'Repo must be public' });
+		} else
+			res.status(500).json({
+				error: 'Unknow error occurred. Try again later.',
+			});
 	}
 }
