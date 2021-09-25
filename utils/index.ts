@@ -1,7 +1,7 @@
 import { request } from 'graphql-request';
 
 // const api = 'https://api-git-staging-blacc.vercel.app/api';
-const api = 'https://3000-ivory-smelt-7padaxg2.ws-us18.gitpod.io/api';
+export const api = 'http://localhost:3030/api';
 
 export const fetcher = (query: string) => request(api, query);
 
