@@ -42,7 +42,7 @@ const HomeUI = ({ handleSubmit }: Props) => {
 				</Text>{' '}
 				bot?
 			</Text>
-			<Box spacing={12} mt={16} w="full" maxW="450px">
+			<Box spacing={12} mt={32} w="full" maxW="450px">
 				<Formik
 					initialValues={{ channel: '', message: '' }}
 					onSubmit={(values) => {
@@ -53,12 +53,7 @@ const HomeUI = ({ handleSubmit }: Props) => {
 						<Form>
 							<Field name="lastName">
 								{({ field }: FieldProps) => (
-									<Stack
-										spacing={12}
-										mt={16}
-										w="full"
-										maxW="450px"
-									>
+									<Stack spacing={12}>
 										<Select
 											w="full"
 											placeholder="channel"
