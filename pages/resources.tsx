@@ -1,4 +1,3 @@
-import { pendingRepos } from '@/utils/graphql/queries';
 import {
 	Flex,
 	Heading,
@@ -8,22 +7,26 @@ import {
 	Stack,
 	Text,
 	HStack,
+	useToast,
 } from '@chakra-ui/react';
 import useRepos from 'hooks/useRepos';
-import React from 'react';
+import useReviewRepo from 'hooks/useReviewRepo';
+import { useRouter } from 'next/dist/client/router';
+import React, { useEffect, useState } from 'react';
 import { MdCheck, MdClose, MdCallMade } from 'react-icons/md';
 
 interface Props {
-	handleClick: (approved: boolean) => void;
+	handleClick: (url: string, approved: boolean) => void;
 }
 
 const ResourcesUI = ({ handleClick }: Props) => {
-	const { error, repos } = useRepos({ query: pendingRepos });
+	const { error, repos } = useRepos();
 
 	if (error) return <Text>{error.toString()}</Text>;
 	return (
 		<Flex
-			py="16"
+			pt="16"
+			pb="4"
 			flexGrow={1}
 			justifyContent="start"
 			alignItems="center"
@@ -41,7 +44,7 @@ const ResourcesUI = ({ handleClick }: Props) => {
 				Make sure these submissions are actual Github repos. If so,
 				approve them, otherwise, decline them.
 			</Text>
-			<Box spacing={12} mt={32} w="full" maxW="650px">
+			<Box spacing={12} mt={16} w="full" maxW="650px" overflowY="scroll">
 				<Stack spacing={12}>
 					{repos?.map((repo, idx) => (
 						<Flex
@@ -77,7 +80,7 @@ const ResourcesUI = ({ handleClick }: Props) => {
 									cursor="pointer"
 									color="brand.purple.500"
 									transition="all 0.2s"
-									onClick={() => handleClick(true)}
+									onClick={() => handleClick(repo.url, true)}
 									_hover={{ bg: 'brand.black' }}
 								>
 									<MdCheck size={18} />
@@ -90,7 +93,7 @@ const ResourcesUI = ({ handleClick }: Props) => {
 									cursor="pointer"
 									color="red.500"
 									transition="all 0.2s"
-									onClick={() => handleClick(false)}
+									onClick={() => handleClick(repo.url, false)}
 									_hover={{ bg: 'brand.black' }}
 								>
 									<MdClose size={18} />
@@ -105,8 +108,32 @@ const ResourcesUI = ({ handleClick }: Props) => {
 };
 
 export default function Resources() {
-	const handleClick = (approved: boolean) => {
-		alert(approved);
+	const toast = useToast();
+	const router = useRouter();
+	const [url, setUrl] = useState<string | null>(null);
+	const [approved, setApproved] = useState<boolean | null>(null);
+	const { res } = useReviewRepo({ variables: { url, approved } });
+
+	useEffect(() => {
+		if (res) {
+			setUrl(null);
+			setApproved(null);
+			toast({
+				title: res,
+				status: 'success',
+				duration: 1500,
+				isClosable: true,
+			});
+			setTimeout(() => {
+				router.reload();
+			}, 1500);
+		}
+	}, [res]);
+
+	const handleClick = (url: string, approved: boolean) => {
+		setApproved(approved);
+		setUrl(url);
 	};
+
 	return <ResourcesUI handleClick={handleClick} />;
 }
