@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import useSWR from 'swr';
 import { fetcher } from '@/utils/index';
+import { pendingRepos } from '@/utils/graphql/queries';
 
 interface ReposResponse {
 	error: any;
@@ -8,16 +9,8 @@ interface ReposResponse {
 	repos: { url: string }[];
 }
 
-interface Props {
-	query: string;
-}
+export default function useRepos(): ReposResponse {
+	const { data, error } = useSWR(pendingRepos, fetcher);
 
-export default function useRepos({ query }: Props): ReposResponse {
-	const { data, error } = useSWR(query, fetcher);
-
-	return {
-		error,
-		loading: !error && !data,
-		repos: data?.getRepos,
-	};
+	return { error, loading: !error && !data, repos: data?.getRepos };
 }
