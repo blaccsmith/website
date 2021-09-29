@@ -22,13 +22,14 @@ We use GitHub issues to track public bugs. Report a bug by [opening a new issue]
 
 ## Create a bug report 
 
-Select **Create Issue** from the repository
+Select [**Create Issue**](https://github.com/blaccsmith/website/issues) from the repository
 
- [![Select button for issue](images/new-issue.png)](https://github.com/blaccsmith/website/issues)
+ ![Select button for issue](images/new-issue.png)
+ 
 
- Select **Get Started** for Bug Report.
+ Select [**Get Started**](https://github.com/blaccsmith/website/issues) for Bug Report.
 
-  [![Select button for bug report](images/bug-and-feature-request.png)](https://github.com/blaccsmith/website/issues)
+  [![Select button for bug report](images/bug-and-feature-request.png)
 
 Complete the following information in the form. Do not create a new file.
 
