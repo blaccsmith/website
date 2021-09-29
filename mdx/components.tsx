@@ -5,13 +5,59 @@ import {
 	Heading,
 	Box,
 	Link,
+	Tooltip,
 	Text,
 	List,
+	Center,
 	Image,
 	ListItem,
 	OrderedList,
-	Center,
 } from '@chakra-ui/react';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import { MdContentCopy } from 'react-icons/md';
+
+const CodeBlock = ({ children, className }: any) => {
+	const language = className.replace(/language-/, '');
+
+	return (
+		<Highlight {...defaultProps} code={children} language={language}>
+			{({ className, style, tokens, getLineProps, getTokenProps }) => (
+				<pre
+					className={className}
+					style={{
+						...style,
+						padding: '16px',
+						borderRadius: '8px',
+						position: 'relative',
+					}}
+				>
+					{tokens.map((line, i) => (
+						<Box key={i} {...getLineProps({ line, key: i })}>
+							{line.map((token, key) => (
+								<span key={key} {...getTokenProps({ token, key })} />
+							))}
+						</Box>
+					))}
+					<Tooltip label="Copy">
+						<Center
+							pos="absolute"
+							cursor="pointer"
+							top="4"
+							right="4"
+							rounded="md"
+							h="8"
+							w="8"
+							onClick={() => navigator.clipboard.writeText(children)}
+							bg="rgba(0,0,0,.15)"
+						>
+							<MdContentCopy />
+						</Center>
+					</Tooltip>
+				</pre>
+			)}
+		</Highlight>
+	);
+};
 
 export const components = {
 	h2: (props: any) => (
@@ -57,6 +103,8 @@ export const components = {
 			{props.children}
 		</ListItem>
 	),
+	pre: (props: any) => <Box {...props} />,
+	code: (props: any) => <CodeBlock {...props} />,
 };
 
 export default components;
