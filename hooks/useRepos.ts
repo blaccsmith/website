@@ -2,6 +2,7 @@
 import useSWR from 'swr';
 import { fetcher } from '@/utils/index';
 import { Repository } from 'types';
+import { reposQuery } from '@/utils/graphql/queries';
 
 interface ReposResponse {
 	error: any;
@@ -9,12 +10,8 @@ interface ReposResponse {
 	repos: Repository[];
 }
 
-interface Props {
-	query: string;
-}
-
-export default function useRepos({ query }: Props): ReposResponse {
-	const { data, error } = useSWR(query, fetcher);
+export default function useRepos(): ReposResponse {
+	const { data, error } = useSWR(reposQuery, fetcher);
 
 	return {
 		error,
