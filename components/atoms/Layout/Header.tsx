@@ -1,4 +1,4 @@
-import { Flex, Text } from '@chakra-ui/layout';
+import { Flex } from '@chakra-ui/layout';
 import Image from 'next/image';
 
 const HeaderUI = () => {
@@ -16,7 +16,6 @@ const HeaderUI = () => {
 			justifyContent="space-between"
 		>
 			<Image alt="logo" width={32} height={32} src="/logo-light.png" />
-			<Text color="brand.white">{process.env.NODE_ENV}</Text>
 		</Flex>
 	);
 };
