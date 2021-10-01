@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Home = () => {
 	return (
-		<Box color="#fff">
+		<Box>
 			<Box py="12">
 				<Image
 					alt="logo"
