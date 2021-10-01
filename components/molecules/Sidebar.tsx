@@ -1,4 +1,4 @@
-import { Stack, Link, Center, Text, HStack } from '@chakra-ui/react';
+import { Stack, Link, Center, SlideFade, Text, HStack } from '@chakra-ui/react';
 import { useRouter } from 'next/dist/client/router';
 import Image from 'next/image';
 import NextLink from 'next/link';
@@ -38,7 +38,7 @@ export default function Sidebar(): JSX.Element {
 				</Center>
 			</Link>
 			<NextLink passHref href="/">
-				<HStack as="a" spacing={4}>
+				<HStack as="a">
 					<Center
 						minH="12"
 						minW="12"
@@ -51,11 +51,13 @@ export default function Sidebar(): JSX.Element {
 					>
 						<MdMessage size={24} />
 					</Center>
-					<Text color="brand.white">Bot</Text>
+					<SlideFade in={showSidebar} offsetX="20px" offsetY="0">
+						<Text color="brand.white">Bot</Text>
+					</SlideFade>
 				</HStack>
 			</NextLink>
 			<NextLink passHref href="/resources">
-				<HStack as="a" spacing={4}>
+				<HStack as="a">
 					<Center
 						minH="12"
 						minW="12"
@@ -68,7 +70,9 @@ export default function Sidebar(): JSX.Element {
 					>
 						<MdInbox size={24} />
 					</Center>
-					<Text color="brand.white">Resources</Text>
+					<SlideFade in={showSidebar} offsetX="20px" offsetY="0">
+						<Text color="brand.white">Resources</Text>
+					</SlideFade>
 				</HStack>
 			</NextLink>
 			<Center
