@@ -41,6 +41,15 @@ export default function Resources() {
 		try {
 			if (!repo.startsWith('https://github.com')) {
 				setIsInputError(true);
+			} else if (repos.find((el) => el.url === repo)) {
+				toast({
+					title: 'Repository already added',
+					description:
+						'This repository has already been added and approved.',
+					status: 'error',
+					duration: 5000,
+					isClosable: true,
+				});
 			} else {
 				setAdding(true);
 				setIsInputError(false);
