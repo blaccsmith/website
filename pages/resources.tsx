@@ -11,7 +11,8 @@ import {
 } from '@chakra-ui/react';
 import useRepos from 'hooks/useRepos';
 import useReviewRepo from 'hooks/useReviewRepo';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { MdCheck, MdClose, MdCallMade } from 'react-icons/md';
 
@@ -45,63 +46,87 @@ const ResourcesUI = ({ handleClick }: Props) => {
 				approve them, otherwise, decline them.
 			</Text>
 			<Box spacing={12} mt={16} w="full" maxW="650px" overflowY="scroll">
-				<Stack spacing={12}>
-					{repos?.map((repo, idx) => (
-						<Flex
-							key={idx}
-							p="6"
-							w="full"
-							bg="#2e2e2e"
-							rounded="md"
-							justifyContent="space-between"
-							alignItems="center"
+				{!repos?.length ? (
+					<Stack spacing={12} mt={12}>
+						<Center pos="relative" w="full" h="300px">
+							<Image
+								layout="fill"
+								alt="empty state"
+								src="/empty.png"
+								objectFit="contain"
+							/>
+						</Center>
+						<Text
+							textAlign="center"
+							fontWeight="medium"
+							color="brand.accent.dark"
 						>
-							<Text color="brand.white">{repo.url}</Text>
-							<HStack spacing={3}>
-								<Link isExternal href={repo.url}>
+							No pending repos to review at this time.
+						</Text>
+					</Stack>
+				) : (
+					<Stack spacing={12}>
+						{repos?.map((repo, idx) => (
+							<Flex
+								key={idx}
+								p="6"
+								w="full"
+								bg="#2e2e2e"
+								rounded="md"
+								justifyContent="space-between"
+								alignItems="center"
+							>
+								<Text color="brand.white">{repo.url}</Text>
+								<HStack spacing={3}>
+									<Link isExternal href={repo.url}>
+										<Center
+											as="button"
+											minH="6"
+											minW="6"
+											rounded="full"
+											cursor="pointer"
+											color="brand.white"
+											transition="all 0.2s"
+											_hover={{ bg: 'brand.black' }}
+										>
+											<MdCallMade size={18} />
+										</Center>
+									</Link>
 									<Center
 										as="button"
 										minH="6"
 										minW="6"
 										rounded="full"
 										cursor="pointer"
-										color="brand.white"
+										color="brand.purple.500"
 										transition="all 0.2s"
+										onClick={() =>
+											handleClick(repo.url, true)
+										}
 										_hover={{ bg: 'brand.black' }}
 									>
-										<MdCallMade size={18} />
+										<MdCheck size={18} />
 									</Center>
-								</Link>
-								<Center
-									as="button"
-									minH="6"
-									minW="6"
-									rounded="full"
-									cursor="pointer"
-									color="brand.purple.500"
-									transition="all 0.2s"
-									onClick={() => handleClick(repo.url, true)}
-									_hover={{ bg: 'brand.black' }}
-								>
-									<MdCheck size={18} />
-								</Center>
-								<Center
-									as="button"
-									minH="6"
-									minW="6"
-									rounded="full"
-									cursor="pointer"
-									color="red.500"
-									transition="all 0.2s"
-									onClick={() => handleClick(repo.url, false)}
-									_hover={{ bg: 'brand.black' }}
-								>
-									<MdClose size={18} />
-								</Center>
-							</HStack>
-						</Flex>
-					))}
-				</Stack>
+									<Center
+										as="button"
+										minH="6"
+										minW="6"
+										rounded="full"
+										cursor="pointer"
+										color="red.500"
+										transition="all 0.2s"
+										onClick={() =>
+											handleClick(repo.url, false)
+										}
+										_hover={{ bg: 'brand.black' }}
+									>
+										<MdClose size={18} />
+									</Center>
+								</HStack>
+							</Flex>
+						))}
+					</Stack>
+				)}
 			</Box>
 		</Flex>
 	);
