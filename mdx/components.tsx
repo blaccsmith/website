@@ -34,7 +34,10 @@ const CodeBlock = ({ children, className }: any) => {
 					{tokens.map((line, i) => (
 						<Box key={i} {...getLineProps({ line, key: i })}>
 							{line.map((token, key) => (
-								<span key={key} {...getTokenProps({ token, key })} />
+								<span
+									key={key}
+									{...getTokenProps({ token, key })}
+								/>
 							))}
 						</Box>
 					))}
@@ -47,7 +50,9 @@ const CodeBlock = ({ children, className }: any) => {
 							rounded="md"
 							h="8"
 							w="8"
-							onClick={() => navigator.clipboard.writeText(children)}
+							onClick={() =>
+								navigator.clipboard.writeText(children)
+							}
 							bg="rgba(0,0,0,.15)"
 						>
 							<MdContentCopy />
@@ -81,6 +86,7 @@ export const components = {
 			{...props}
 			w="full"
 			my="16"
+			alt={props.children}
 			maxW="700px"
 			alignSelf="center"
 			marginLeft="auto"

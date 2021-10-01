@@ -27,6 +27,7 @@ export default function ProgressiveImage(props: any): JSX.Element {
 		<Image
 			{...rest}
 			loading="lazy"
+			alt={rest.alt || 'some photo'}
 			placeholder="blur"
 			blurDataURL={`data:image/svg+xml;base64,${toBase64(
 				shimmer(minW, minH)

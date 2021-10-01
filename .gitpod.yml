@@ -1,0 +1,19 @@
+# List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
+tasks:
+    - name: Next.js Server
+      init: yarn
+      command: yarn dev
+    - name: Typescript Watcher
+      init: tsc -w
+    # - name: Configuring git hooks
+    #   init: ln -sf ../../git-hooks/pre-commit .git/hooks/pre-commit && ln -sf ../../git-hooks/commit-msg .git/hooks/commit-msg
+# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
+ports:
+    - port: 3000
+      onOpen: open-preview
+
+github:
+    prebuilds:
+        pullRequests: true
+        branches: true
+        pullRequestsFromForks: true
