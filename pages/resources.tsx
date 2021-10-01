@@ -15,6 +15,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { MdCheck, MdClose, MdCallMade } from 'react-icons/md';
+import empty from '../public/empty.png';
 
 interface Props {
 	handleClick: (url: string, approved: boolean) => void;
@@ -22,6 +23,7 @@ interface Props {
 
 const ResourcesUI = ({ handleClick }: Props) => {
 	const { error, repos } = useRepos();
+	const unknown = repos === null || repos === undefined;
 
 	if (error) return <Text>{error.toString()}</Text>;
 	return (
@@ -46,13 +48,14 @@ const ResourcesUI = ({ handleClick }: Props) => {
 				approve them, otherwise, decline them.
 			</Text>
 			<Box spacing={12} mt={16} w="full" maxW="650px" overflowY="scroll">
-				{!repos?.length ? (
-					<Stack spacing={12} mt={12}>
-						<Center pos="relative" w="full" h="300px">
+				{unknown ? null : !repos?.length ? (
+					<Stack spacing={12} mt={24}>
+						<Center pos="relative" h="300px">
 							<Image
-								layout="fill"
 								alt="empty state"
-								src="/empty.png"
+								src={empty}
+								width="300px"
+								placeholder="blur"
 								objectFit="contain"
 							/>
 						</Center>
