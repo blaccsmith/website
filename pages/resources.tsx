@@ -16,8 +16,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Repo from '@/components/atoms/Repo';
 import { Repository } from 'types';
-import useResources from '@/hooks/useResources';
-import { reposQuery } from '@/utils/graphql/queries';
+import useRepos from '@/hooks/useRepos';
 
 export default function Resources() {
 	const toast = useToast();
@@ -26,7 +25,7 @@ export default function Resources() {
 	const [adding, setAdding] = useState(false);
 	const [tags, setTags] = useState<string[]>([]);
 	const [isInputError, setIsInputError] = useState(false);
-	const { repos, error, loading } = useResources({ query: reposQuery });
+	const { repos, error, loading } = useRepos();
 
 	const filteredTags = tags.filter((el) => el === topic);
 	const filteredRepos = repos?.filter((repo) =>
