@@ -73,6 +73,7 @@ export default function Resources() {
 				data?.message?.addRepo && setRepo('');
 			}
 		} catch (error: any) {
+			setAdding(false);
 			toast({
 				title: error.message,
 				status: 'error',
