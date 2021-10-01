@@ -1,6 +1,6 @@
 import { request } from 'graphql-request';
 
-const api = 'https://api-git-staging-blacc.vercel.app/api';
+export const api = 'https://api-git-staging-blacc.vercel.app/api';
 
 export const fetcher = (query: string) => request(api, query);
 
