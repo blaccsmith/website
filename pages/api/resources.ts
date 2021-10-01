@@ -28,6 +28,8 @@ export default async function handler(
 
 		res.status(201).json({ message: data });
 	} catch (error: any) {
+		console.log({ error });
+
 		if ((error.toJSON().message as string).endsWith('404'))
 			res.status(201).json({ error: 'Repo must be public' });
 		else
