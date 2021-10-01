@@ -1,6 +1,6 @@
 export const reposQuery = `
 	{
-		getRepos {
+		getRepos(filter: "approved") {
 			url
 			name
 			description
