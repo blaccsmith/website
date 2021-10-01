@@ -63,13 +63,14 @@ export default function Resources() {
 					url: repo,
 				});
 				setAdding(false);
-				setRepo('');
 				toast({
 					title: data?.message?.addRepo ?? data.error,
 					status: data?.message ? 'success' : 'error',
 					duration: 4000,
 					isClosable: true,
 				});
+
+				data?.message?.addRepo && setRepo('');
 			}
 		} catch (error: any) {
 			toast({
@@ -109,7 +110,6 @@ export default function Resources() {
 			<HStack
 				w="full"
 				mt="4"
-				// bg="red"
 				minH="27px"
 				overflowY="hidden"
 				overflowX="scroll"
