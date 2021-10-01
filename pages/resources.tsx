@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
 	Box,
 	Button,
@@ -37,17 +38,28 @@ export default function Resources() {
 	};
 
 	const handleClick = async () => {
-		if (!repo.startsWith('https://github.com')) {
-			setIsInputError(true);
-		} else {
-			setAdding(true);
-			setIsInputError(false);
-			const { data } = await axios.post('/api/resources', { url: repo });
-			setAdding(false);
-			setRepo('');
+		try {
+			if (!repo.startsWith('https://github.com')) {
+				setIsInputError(true);
+			} else {
+				setAdding(true);
+				setIsInputError(false);
+				const { data } = await axios.post('/api/resources', {
+					url: repo,
+				});
+				setAdding(false);
+				setRepo('');
+				toast({
+					title: data?.message?.addRepo ?? data.error,
+					status: data?.message ? 'success' : 'error',
+					duration: 4000,
+					isClosable: true,
+				});
+			}
+		} catch (error: any) {
 			toast({
-				title: data?.message?.addRepo ?? data.error,
-				status: data?.message ? 'success' : 'error',
+				title: error.message,
+				status: 'error',
 				duration: 4000,
 				isClosable: true,
 			});
