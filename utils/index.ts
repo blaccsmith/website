@@ -1,6 +1,12 @@
+/* eslint-disable indent */
 import { request } from 'graphql-request';
 
-export const api = 'https://api-git-staging-blacc.vercel.app/api';
+export const api =
+	process.env.NEXT_PUBLIC_TARGET_ENV === 'prod'
+		? 'https://api.blacc.xyz/api'
+		: process.env.NEXT_PUBLIC_TARGET_ENV === 'staging'
+		? 'https://staging-api.blacc.xyz/api'
+		: 'http://localhost:3030/api';
 
 export const fetcher = (query: string) => request(api, query);
 
