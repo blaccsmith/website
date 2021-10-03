@@ -5,6 +5,8 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { BlogMetadata } from 'types';
 import { components } from 'mdx/components';
 import React, { useEffect, useState } from 'react';
+import { NextSeo } from 'next-seo';
+import { canoncialUrl } from 'constants';
 import BlogHeader from '@/components/molecules/BlogHeader';
 import AuthorInfo from '@/components/molecules/AuthorInfo';
 import ScrollToTop from '@/components/atoms/ScrollToTop';
@@ -26,16 +28,41 @@ export default function BlogPost({ frontMatter, source }: Props) {
 	}, []);
 
 	return (
-		<Flex justifyContent="center" p="6">
-			<AuthorInfo show={showAuthor} data={frontMatter.author} />
-			<Box ml={{ base: '0', lg: '9' }} overflowY="scroll">
-				<BlogHeader metadata={frontMatter} />
-				<Box as="article" id="content" maxW="1000px">
-					<MDXRemote {...source} components={components} />
+		<>
+			<NextSeo
+				title={`${frontMatter.title} - BLACC Blog Post`}
+				canonical={canoncialUrl}
+				openGraph={{
+					type: 'website',
+					url: `https://www.blacc.xyz/blog/${frontMatter.title}`,
+					title: `${frontMatter.title}`,
+					description: frontMatter.title,
+					images: [
+						{
+							url: 'public/logo-light.png',
+							width: 1200,
+							height: 630,
+							alt: 'BLACC Logo',
+						},
+					],
+					site_name: 'The Black Coder Community',
+				}}
+				twitter={{
+					handle: '@blaccxyz_',
+					cardType: 'summary_large_image',
+				}}
+			/>
+			<Flex justifyContent="center" p="6">
+				<AuthorInfo show={showAuthor} data={frontMatter.author} />
+				<Box ml={{ base: '0', lg: '9' }} overflowY="scroll">
+					<BlogHeader metadata={frontMatter} />
+					<Box as="article" id="content" maxW="1000px">
+						<MDXRemote {...source} components={components} />
+					</Box>
 				</Box>
-			</Box>
-			<ScrollToTop />
-		</Flex>
+				<ScrollToTop />
+			</Flex>
+		</>
 	);
 }
 
