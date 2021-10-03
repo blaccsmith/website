@@ -6,7 +6,7 @@ import { BlogMetadata } from 'types';
 import { components } from 'mdx/components';
 import React, { useEffect, useState } from 'react';
 import { NextSeo } from 'next-seo';
-import { canoncialUrl } from 'constants';
+import { canoncialUrl } from '../../constants';
 import BlogHeader from '@/components/molecules/BlogHeader';
 import AuthorInfo from '@/components/molecules/AuthorInfo';
 import ScrollToTop from '@/components/atoms/ScrollToTop';
