@@ -10,6 +10,7 @@ import { canoncialUrl } from '../../constants';
 import BlogHeader from '@/components/molecules/BlogHeader';
 import AuthorInfo from '@/components/molecules/AuthorInfo';
 import ScrollToTop from '@/components/atoms/ScrollToTop';
+import { useRouter } from 'next/dist/client/router';
 
 interface Props {
 	source: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -17,7 +18,9 @@ interface Props {
 }
 
 export default function BlogPost({ frontMatter, source }: Props) {
+	const router = useRouter();
 	const [showAuthor, setShowAuthor] = useState(false);
+	const { slug } = router.query;
 
 	useEffect(() => {
 		if (window) {
@@ -30,13 +33,13 @@ export default function BlogPost({ frontMatter, source }: Props) {
 	return (
 		<>
 			<NextSeo
-				title={`${frontMatter.title} - BLACC Blog Post`}
+				title={frontMatter.title}
 				canonical={canoncialUrl}
 				openGraph={{
 					type: 'website',
-					url: `https://www.blacc.xyz/blog/${frontMatter.title}`,
-					title: `${frontMatter.title}`,
-					description: frontMatter.title,
+					url: `${canoncialUrl}blog/${slug}`,
+					title: frontMatter.title,
+					description: `By ${frontMatter.author.name}`,
 					images: [
 						{
 							url: 'public/logo-light.png',
