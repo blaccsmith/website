@@ -69,6 +69,10 @@ If you are new to Github or would like a quick visual of what's going on in the 
 
 Want to leverage Github Desktop? See [Contributing and collaborating using GitHub Desktop](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop)
 
+### Gitpod 
+
+Interesting in trying the online experience through a browser? Try https://www.gitpod.io/docs/quickstart
+
 ### Tips
 
  The information will be helpful as you being a journey with Github or to refresh your skills. This list is subject to change based on availability. If one of the links no longer works, please advise us, or share a link you've found useful.
