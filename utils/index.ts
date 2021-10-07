@@ -10,6 +10,9 @@ export const api =
 
 export const fetcher = (query: string) => request(api, query);
 
+export const toKebabCase = (str: string) =>
+	str.trim().replace(/\s+/g, '-').toLowerCase();
+
 export const convertNum = (num: number) => {
 	if (num < 1000) return num;
 
