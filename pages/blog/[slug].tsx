@@ -37,7 +37,7 @@ export default function BlogPost({ frontMatter, source }: Props) {
 				canonical={canoncialUrl}
 				openGraph={{
 					type: 'website',
-					url: `${canoncialUrl}blog/${slug}`,
+					url: `${canoncialUrl}/blog/${slug}`,
 					title: frontMatter.title,
 					description: `By ${frontMatter.author.name}`,
 					images: [
@@ -46,6 +46,7 @@ export default function BlogPost({ frontMatter, source }: Props) {
 							width: 1200,
 							height: 630,
 							alt: 'BLACC Logo',
+							type: 'image/png',
 						},
 					],
 					site_name: 'The Black Coder Community',
