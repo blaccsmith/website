@@ -34,6 +34,7 @@ export default function BlogPost({ frontMatter, source }: Props) {
 		<>
 			<NextSeo
 				title={frontMatter.title}
+				defaultTitle= 'BLACC Blog | %s'
 				openGraph={{
 					type: 'website',
 					url: `${canoncialUrl}/blog/${slug}`,
@@ -41,7 +42,7 @@ export default function BlogPost({ frontMatter, source }: Props) {
 					description: `By ${frontMatter.author.name}`,
 					images: [
 						{
-							url: `${canoncialUrl}/logo-light.png`,
+							url: `${canoncialUrl}logo-light.png`,
 							width: 1200,
 							height: 630,
 							alt: 'BLACC Logo',

@@ -25,8 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 		<ChakraProvider theme={theme}>
 			<Layout>
 				<DefaultSeo
-					title="BLACC"
-					canonical={canoncialUrl}
+					title="The Black Coder Community"
 					openGraph={{
 						type: 'website',
 						url: `${canoncialUrl}`,
