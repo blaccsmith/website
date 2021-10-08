@@ -34,8 +34,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 						images: [
 							{
 								url: `${canoncialUrl}banner.png`,
-								width: 1200,
-								height: 630,
+								width: 800,
+								height: 450,
 								alt: 'BLACC Banner',
 								type: 'image/png',
 							},
