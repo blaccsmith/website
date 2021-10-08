@@ -47,14 +47,11 @@ export default function BlogPost({ frontMatter, source }: Props) {
 							alt: 'BLACC Logo',
 							type: 'image/png',
 						},
-						{
-							url: `${canoncialUrl}logo-light.png`,
-							width: 89,
-							height: 89,
-							alt: 'BLACC Logo 2',
-							type: 'image/png',
-						},
 					],
+				}}
+				twitter={{
+					handle: '@blaccxyz_',
+					cardType: 'summary',
 				}}
 			/>
 			<Flex justifyContent="center" p="6">
