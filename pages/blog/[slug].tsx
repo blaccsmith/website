@@ -42,16 +42,19 @@ export default function BlogPost({ frontMatter, source }: Props) {
 					images: [
 						{
 							url: `${canoncialUrl}logo-light.png`,
-							width: 750,
-							height: 750,
+							width: 1200,
+							height: 630,
 							alt: 'BLACC Logo',
 							type: 'image/png',
 						},
+						{
+							url: `${canoncialUrl}logo-light.png`,
+							width: 89,
+							height: 89,
+							alt: 'BLACC Logo 2',
+							type: 'image/png',
+						},
 					],
-				}}
-				twitter={{
-					handle: '@blaccxyz_',
-					cardType: 'summary_large_image',
 				}}
 			/>
 			<Flex justifyContent="center" p="6">
