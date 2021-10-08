@@ -29,17 +29,17 @@ function MyApp({ Component, pageProps }: AppProps) {
 					openGraph={{
 						type: 'website',
 						url: `${canoncialUrl}`,
+						title: 'BLACC',
+						site_name: 'The Black Coder Community',
 						images: [
 							{
-								url: `${canoncialUrl}/banner.png`,
+								url: `${canoncialUrl}banner.png`,
 								width: 1200,
 								height: 630,
 								alt: 'BLACC Banner',
 								type: 'image/png',
 							},
 						],
-						title: 'BLACC',
-						site_name: 'The Black Coder Community',
 					}}
 					twitter={{
 						handle: '@blaccxyz_',
