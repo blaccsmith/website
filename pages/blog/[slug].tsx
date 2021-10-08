@@ -49,6 +49,10 @@ export default function BlogPost({ frontMatter, source }: Props) {
 						},
 					],
 				}}
+				twitter={{
+					handle: '@blaccxyz_',
+					cardType: 'summary_large_image',
+				}}
 			/>
 			<Flex justifyContent="center" p="6">
 				<AuthorInfo show={showAuthor} data={frontMatter.author} />
