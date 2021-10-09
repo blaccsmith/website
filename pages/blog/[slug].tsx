@@ -42,8 +42,8 @@ export default function BlogPost({ frontMatter, source }: Props) {
 					images: [
 						{
 							url: `${canoncialUrl}blog_banner.png`,
-							width: 1200,
-							height: 630,
+							width: 800,
+							height: 450,
 							alt: 'BLACC Logo',
 							type: 'image/png',
 						},
