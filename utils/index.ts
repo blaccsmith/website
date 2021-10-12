@@ -1,5 +1,9 @@
 /* eslint-disable indent */
 import { request } from 'graphql-request';
+import fs from 'fs';
+import path from 'path';
+
+export const IMAGES_PATH = path.join(process.cwd(), '/public/homepage');
 
 export const api =
 	process.env.NEXT_PUBLIC_TARGET_ENV === 'prod'
@@ -34,4 +38,10 @@ export const convertNum = (num: number) => {
 		(num / si[i].v).toFixed(2).replace(/\.0+$|(\.[0-9]*[1-9])0+$/, '$1') +
 		si[i].s
 	);
+};
+
+export const getHomePageImages = () => {
+	const imagesPath = fs.readdirSync(IMAGES_PATH);
+	const images = imagesPath.map((slug) => '/homepage/' + slug);
+	return images;
 };
