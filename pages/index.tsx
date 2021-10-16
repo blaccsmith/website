@@ -1,21 +1,20 @@
+import { GetStaticProps } from 'next';
+import { useState } from 'react';
+import { homePageImages } from '../constants';
 import {
 	Box,
-	VStack,
 	HStack,
-	Spacer,
 	Stack,
 	Text,
 	Button,
 	Grid,
 	GridItem,
 	Center,
+	Image,
 } from '@chakra-ui/react';
-import { GetStaticProps } from 'next';
-import Image from 'next/image';
-import { getHomePageImages } from '../utils';
 
 interface Props {
-	images: any;
+	images: string[];
 }
 
 const Home = ({ images }: Props) => {
@@ -57,24 +56,27 @@ const Home = ({ images }: Props) => {
 						templateRows="repeat(3,1fr)"
 						gap="1.013rem"
 					>
-						{images.map((src: string) => {
+						{images.map((src: string, idx: number) => {
 							return (
-								<GridItem key={src}>
-									{!src.includes('5') &&
-									!src.includes('6') ? (
+								<GridItem key={idx}>
+									{idx === 4 || idx === 5 ? (
+										<Box
+											key={idx}
+											width="auto"
+											height="auto"
+										></Box>
+									) : (
 										<Image
 											src={src}
 											key={src}
 											alt={src}
+											id={src}
 											width={172}
 											height={172}
+											objectFit="cover"
+											filter="grayscale(100%)"
+											_hover={{ filter: 'grayscale(0%)' }}
 										/>
-									) : (
-										<Box
-											key={src}
-											width="auto"
-											height="auto"
-										></Box>
 									)}
 								</GridItem>
 							);
@@ -86,7 +88,7 @@ const Home = ({ images }: Props) => {
 	);
 };
 export const getStaticProps: GetStaticProps = async () => {
-	const images = getHomePageImages();
+	const images = homePageImages;
 	return { props: { images } };
 };
 export default Home;
