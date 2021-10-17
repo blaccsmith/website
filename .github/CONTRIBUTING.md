@@ -1,3 +1,17 @@
+# 🙌 Hacktoberfest
+
+### What is Hacktoberfest?
+
+[Hacktoberfest](https://hacktoberfest.digitalocean.com) is a month-long celebration of open source software run by DigitalOcean in partnership with GitHub and Dev.
+
+- Hacktoberfest is open to everyone in our global community!
+- Four quality pull requests must be submitted to public GitHub repositories.
+- You can sign up anytime between October 1 and October 31.
+
+## 2021
+
+- [Hacktoberfest 2021 events](https://hacktoberfest.digitalocean.com/events)
+
 # Contributing to BLACC
 
 We love your input! We want to make contributing to this project as easy and transparent as possible, whether it's:
@@ -20,16 +34,73 @@ Pull requests are the best way to propose changes to the codebase (we use [Githu
 
 We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/BLACC-Smith/website/issues/new/choose); it's that easy!
 
-## Write bug reports with detail, background, and sample code
+## Create a bug report 
 
-**Great Bug Reports** tend to have:
+Select [**Create Issue**](https://github.com/blaccsmith/website/issues) from the repository.
 
-- A quick summary and/or background
-- Steps to reproduce
-  - Be specific!
-  - Give sample code if you can
-- What you expected would happen
-- What actually happens
-- Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)
+ ![Select button for issue](/.github/new-issue.png)
+ 
 
-People _love_ thorough bug reports. I'm not even kidding.
+ Select [**Get Started**](https://github.com/blaccsmith/website/issues) for Bug Report.
+
+  ![Select button for bug report](/.github/bug-and-feature-request.png)
+
+Complete the following information in the form. Do not create a new file.
+
+```txt
+**Describe the bug**
+A clear and concise description of what the bug is.
+
+**To Reproduce**
+Steps to reproduce the behavior:
+
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
+
+**Expected behavior**
+A clear and concise description of what you expected to happen.
+
+**Screenshots**
+If applicable, add screenshots to help explain your problem.
+
+**Where is this happening **
+
+- [ ] Desktop
+- [ ] Mobile
+
+**Additional context**
+Add any other context about the problem here.
+```
+
+## Request a new feature
+
+To request a new feature follow the same path as a bug report and select **Getting Started** for feature request.
+
+[![Select button for new feature](images/bug-and-feature-request.png)](https://github.com/blaccsmith/website/issues)
+
+Complete the following information in the form. Do not create a new file.
+
+```txt
+**Is your feature request related to a problem? Please describe.**
+A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+
+**Describe the solution you'd like**
+A clear and concise description of what you want to happen.
+
+**Describe alternatives you've considered**
+A clear and concise description of any alternative solutions or features you've considered.
+
+**Additional context**
+Add any other context or screenshots about the feature request here.
+```
+The key to a bug  or feature report is to provide as much detail as possible. If you have a recommendation for a solution provide that as well. Include why you think this might be helpful to the community to know.
+
+Once you create a feature or bug report, look for comments and/or questions from the viewer.
+
+## Next Steps
+
+[Getting Started with GitHub Locally](getting-started-with-github.md)
+
+[Contribute your first blog](BLOG_CONTRIBUTING.MD)

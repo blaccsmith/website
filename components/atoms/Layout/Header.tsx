@@ -4,16 +4,18 @@ import Image from 'next/image';
 const HeaderUI = () => {
 	return (
 		<Flex
-			p="12"
+			as="header"
+			p="5"
+			pl="6"
 			bg="translucent"
 			pos="sticky"
 			top="0"
 			w="full"
 			zIndex="banner"
-			backdropFilter="blur(7px)"
+			backdropFilter="blur(10px)"
 			justifyContent="space-between"
 		>
-			<Image width={50} height={50} src="/logo-light.png" />
+			<Image alt="logo" width={32} height={32} src="/logo-light.png" />
 		</Flex>
 	);
 };
