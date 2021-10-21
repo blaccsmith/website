@@ -1,6 +1,5 @@
 import { GetStaticProps } from 'next';
 import { useEffect, useRef, useState } from 'react';
-import { homePageImages, pillars } from '../constants';
 import {
 	Box,
 	HStack,
@@ -12,12 +11,14 @@ import {
 	Center,
 	Image,
 } from '@chakra-ui/react';
+import { homePageImages, pillars } from '../constants';
 
-interface Props {
+interface HomepageProps {
 	images: string[];
 }
 
-const Home = ({ images }: Props) => {
+
+const Home = ({ images }: HomepageProps) => {
 	const [pos,setPos] = useState(0);
 	const scrollingContainer= useRef<HTMLDivElement>(null) 
 
@@ -36,7 +37,7 @@ const Home = ({ images }: Props) => {
 		<Box p="6">
 			<Center flexDir='column'>
 				<HStack spacing={224}>
-					<Stack w={537} p="6" spacing={5}>
+					<Stack w={537} spacing={5}>
 						<Text
 							color="brand.white"
 							fontFamily="heading"
@@ -82,9 +83,8 @@ const Home = ({ images }: Props) => {
 									) : (
 										<Image
 											src={src}
-											key={src}
-											alt={src}
-											id={src}
+											key={idx}
+											alt={`black people in tech #${idx}`}
 											width={172}
 											height={172}
 											objectFit="cover"
