@@ -1,12 +1,12 @@
 import { GetStaticProps } from 'next';
-import { useState } from 'react';
-import { homePageImages } from '../constants';
+import { useEffect, useRef, useState } from 'react';
+import { homePageImages, pillars } from '../constants';
 import {
 	Box,
 	HStack,
 	Stack,
 	Text,
-	Button,
+	Button,Heading,
 	Grid,
 	GridItem,
 	Center,
@@ -18,9 +18,23 @@ interface Props {
 }
 
 const Home = ({ images }: Props) => {
+	const [pos,setPos] = useState(0);
+	const scrollingContainer= useRef<HTMLDivElement>(null) 
+
+	useEffect(() => {
+		scrollingContainer.current?.scrollTo({
+			top: 207 * pos,
+			behavior:'smooth'
+		})
+	},[pos])
+
+	const getTop = () => {
+		return pos === 0? '0':pos ===1 ?'33%':'67%'
+	}
+	
 	return (
 		<Box p="6">
-			<Center>
+			<Center flexDir='column'>
 				<HStack spacing={224}>
 					<Stack w={537} p="6" spacing={5}>
 						<Text
@@ -83,6 +97,28 @@ const Home = ({ images }: Props) => {
 						})}
 					</Grid>
 				</HStack>
+				<Box mt='32'>
+					<Heading fontSize='3xl' color='brand.white'>What we're about</Heading>
+					<HStack mt='48'>
+						<Stack spacing={0} pos='relative'>
+							{pillars.map((el,idx) => (
+								<Box key={idx} py='4' px='6' pos='relative' cursor='pointer' onClick={() => setPos(idx)}>
+									<Text color='#909090' fontSize='xl' textAlign='right'>{el.label}</Text>
+									<Box pos='absolute' right='0' top='0' h='full' w='1' bg='#909090' />
+								</Box>
+
+							))}		
+							<Box transition='all .2s' pos='absolute' right='0' top={getTop()} h='33%' w='1' bg='brand.purple.400' />
+						</Stack>
+						<Box h='207px' overflowY='scroll' ref={scrollingContainer}>
+							{pillars.map((el,idx) => (
+								<Center key={idx} h='207px' px='16'>
+									<Text color='brand.white'>{el.description}</Text>
+								</Center>
+							))}
+						</Box>
+					</HStack>
+				</Box>
 			</Center>
 		</Box>
 	);
