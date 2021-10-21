@@ -1,6 +1,9 @@
 import { GetStaticProps } from 'next';
-import { useState } from 'react';
 import { homePageImages } from '../constants';
+import { useState } from 'react';
+import PillersTabs from '@/components/molecules/PillersTabs';
+import PillersTabsContent from '@/components/molecules/PillersTabsContent';
+
 import {
 	Box,
 	HStack,
@@ -13,16 +16,18 @@ import {
 	Image,
 } from '@chakra-ui/react';
 
-interface Props {
+interface HomepageProps {
 	images: string[];
 }
 
-const Home = ({ images }: Props) => {
+const Home = ({ images }: HomepageProps) => {
+	const [activeTab, setActiveTab] = useState<number>(0);
+
 	return (
-		<Box p="6">
+		<Box padding="0 6">
 			<Center>
 				<HStack spacing={224}>
-					<Stack w={537} p="6" spacing={5}>
+					<Stack w={537} spacing={5}>
 						<Text
 							color="brand.white"
 							fontFamily="heading"
@@ -68,9 +73,8 @@ const Home = ({ images }: Props) => {
 									) : (
 										<Image
 											src={src}
-											key={src}
-											alt={src}
-											id={src}
+											key={idx}
+											alt={`black people in tech #${idx}`}
 											width={172}
 											height={172}
 											objectFit="cover"
@@ -84,6 +88,28 @@ const Home = ({ images }: Props) => {
 					</Grid>
 				</HStack>
 			</Center>
+			<Center>
+				<Stack h="100vh" w="100%" bg="red" pl={6} pr={6}>
+					<Center>
+						<Text
+							color="brand.white"
+							fontSize="3xl"
+							fontFamily="heading"
+							margin="6px 0px"
+						>
+							What we're about
+						</Text>
+					</Center>
+					<HStack h="216px">
+						<PillersTabs
+							activeTab={activeTab}
+							setActiveTab={setActiveTab}
+						/>
+						<PillersTabsContent activeTab={activeTab} />
+					</HStack>
+				</Stack>
+			</Center>
+			{/* <Box h="100vh" bg="orange" p="6"></Box> */}
 		</Box>
 	);
 };
