@@ -2,10 +2,13 @@
 
 Thanks for wanting to share **your unique experiences and insights** with the rest of the community! We've made a sandbox for you to write and view your blog so let's go through how it works 🚀
 
-## Setup
+## Setup - 1
+Fork our repository, and complete the following steps from your forked repo.
+Next, clone the staging branch and follow the instructions in Setup-2 or read below to learn how to open Gitpod workspace to start blogging in the cloud 🤩
 
-Either clone the [**staging branch**](https://github.com/blaccsmith/website/tree/staging) or click [here](https://gitpod.io/#github.com/blaccsmith/website/tree/staging) to open a Gitpod workspace to start blogging in the cloud 🤩
+Download and install the Gitpod extension for your browser. Refresh the page and click on the green button that says "Gitpod" at the top right corner of your forked repository. In your newly-opened cloud workspace, switch to the staging branch in the terminal. You're ready to move on to the next step!
 
+## Setup - 2
 Run `yarn` to install dependencies and then `yarn dev` to start the server. Once the server starts, go to **http://localhost:3000** and you should see a bunch of **BLACC logos** (we're still working on the home page 😅). If you're using Gitpod, your server should be running on a link similar to `https://3000-olive-bovid-lfeo60c6.ws-eu16.gitpod.io/`. If so, you're ready to write!
 
 ## Writing
@@ -52,5 +55,5 @@ To access an image in your markdown, simply use "**/file-path**" where needed. B
 > For the above Github photo, I wrote "**/github-empty-folder.png**" in the [neccecary syntax](https://www.markdownguide.org/basic-syntax/#images-1).
 
 ## Publishing
-
-Once you've finished writing your blog, create a PR to the `staging branch` and you're done! 🥳
+Once you've finished writing your blog, commit your changes.
+Then create a PR to the `staging branch` and you're done! 🥳
