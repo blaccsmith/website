@@ -18,7 +18,26 @@ export const homePageImages: string[] = [
 ];
 
 export const pillars = [
-	{label:'equity',description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae sollicitudin libero. Sed placerat mollis tortor, sit amet ullamcorper ex fermentum a. Sed mauris lacus, euismod nec tincidunt id, scelerisque eget justo.'},
-	{label:'education',description:'Mauris dapibus tellus faucibus, ultricies tellus et, aliquet libero. Suspendisse a eleifend purus. Maecenas rutrum rhoncus risus, ut tempus odio.'},
-	{label:'collaboration',description:'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer sodales libero ipsum, et pharetra ante tincidunt ut.'}
-]
+	{
+		label: 'equity',
+		description:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae sollicitudin libero. Sed placerat mollis tortor, sit amet ullamcorper ex fermentum a. Sed mauris lacus, euismod nec tincidunt id, scelerisque eget justo.',
+	},
+	{
+		label: 'education',
+		description:
+			'Mauris dapibus tellus faucibus, ultricies tellus et, aliquet libero. Suspendisse a eleifend purus. Maecenas rutrum rhoncus risus, ut tempus odio.',
+	},
+	{
+		label: 'collaboration',
+		description:
+			'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer sodales libero ipsum, et pharetra ante tincidunt ut.',
+	},
+];
+
+export const whyUs = [
+	{ title: '500+', subtitle: 'memebers' },
+	{ title: '24/7', subtitle: 'relaxed space' },
+	{ title: '13+', subtitle: 'shared projects' },
+	{ title: '$0', subtitle: 'to join' },
+];

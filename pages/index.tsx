@@ -1,43 +1,44 @@
 import { GetStaticProps } from 'next';
 import { useEffect, useRef, useState } from 'react';
+import { homePageImages, pillars, whyUs } from '../constants';
 import {
 	Box,
 	HStack,
 	Stack,
 	Text,
-	Button,Heading,
+	Button,
+	Heading,
 	Grid,
 	GridItem,
 	Center,
 	Image,
+	VStack,
 } from '@chakra-ui/react';
-import { homePageImages, pillars } from '../constants';
 
 interface HomepageProps {
 	images: string[];
 }
 
-
 const Home = ({ images }: HomepageProps) => {
-	const [pos,setPos] = useState(0);
-	const scrollingContainer= useRef<HTMLDivElement>(null) 
+	const [pos, setPos] = useState(0);
+	const scrollingContainer = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		scrollingContainer.current?.scrollTo({
 			top: 207 * pos,
-			behavior:'smooth'
-		})
-	},[pos])
+			behavior: 'smooth',
+		});
+	}, [pos]);
 
 	const getTop = () => {
-		return pos === 0? '0':pos ===1 ?'33%':'67%'
-	}
-	
+		return pos === 0 ? '0' : pos === 1 ? '33%' : '67%';
+	};
+
 	return (
 		<Box p="6">
-			<Center flexDir='column'>
+			<Center flexDir="column">
 				<HStack spacing={224}>
-					<Stack w={537} spacing={5}>
+					<Stack w="50%" spacing={5}>
 						<Text
 							color="brand.white"
 							fontFamily="heading"
@@ -97,28 +98,111 @@ const Home = ({ images }: HomepageProps) => {
 						})}
 					</Grid>
 				</HStack>
-				<Box mt='32'>
-					<Heading fontSize='3xl' color='brand.white'>What we're about</Heading>
-					<HStack mt='48'>
-						<Stack spacing={0} pos='relative'>
-							{pillars.map((el,idx) => (
-								<Box key={idx} py='4' px='6' pos='relative' cursor='pointer' onClick={() => setPos(idx)}>
-									<Text color='#909090' fontSize='xl' textAlign='right'>{el.label}</Text>
-									<Box pos='absolute' right='0' top='0' h='full' w='1' bg='#909090' />
+				<VStack
+					mt="32"
+					justifyContent="center"
+					alignItems="center"
+					h="100vh"
+					bg="green"
+				>
+					<Heading fontSize="3xl" color="brand.white">
+						What we're about
+					</Heading>
+					<HStack mt="48">
+						<Stack spacing={0} pos="relative" mt={6}>
+							{pillars.map((el, idx) => (
+								<Box
+									key={idx}
+									py="4"
+									px="6"
+									pos="relative"
+									cursor="pointer"
+									onClick={() => setPos(idx)}
+								>
+									<Text
+										color="#909090"
+										fontSize="xl"
+										textAlign="right"
+									>
+										{el.label}
+									</Text>
+									<Box
+										pos="absolute"
+										right="0"
+										top="0"
+										h="full"
+										w="1"
+										bg="#909090"
+									/>
 								</Box>
-
-							))}		
-							<Box transition='all .2s' pos='absolute' right='0' top={getTop()} h='33%' w='1' bg='brand.purple.400' />
+							))}
+							<Box
+								transition="all .2s"
+								pos="absolute"
+								right="0"
+								top={getTop()}
+								h="33%"
+								w="1"
+								bg="brand.purple.400"
+							/>
 						</Stack>
-						<Box h='207px' overflowY='scroll' ref={scrollingContainer}>
-							{pillars.map((el,idx) => (
-								<Center key={idx} h='207px' px='16'>
-									<Text color='brand.white'>{el.description}</Text>
+						<Box
+							h="207px"
+							overflowY="scroll"
+							overflow="hidden"
+							ref={scrollingContainer}
+						>
+							{pillars.map((el, idx) => (
+								<Center key={idx} h="207px" px="16">
+									<Text color="brand.white">
+										{el.description}
+									</Text>
 								</Center>
 							))}
 						</Box>
 					</HStack>
-				</Box>
+				</VStack>
+				<VStack
+					mt="32"
+					justifyContent="center"
+					alignItems="center"
+					h="100vh"
+					w="100%"
+				>
+					<Heading fontSize="3xl" color="brand.white">
+						Why us?
+					</Heading>
+					<Grid
+						templateRows="repeat(2,1fr)"
+						templateColumns="repeat(2,1fr)"
+						gap={2}
+					>
+						{whyUs.map((el, idx) => (
+							<GridItem key={idx} w="full" h="full" p="9">
+								<Center
+									flexDirection="column"
+									transition="all .2s"
+									_hover={{
+										boxShadow: '6px 6px #7B61FF',
+										transform: 'translate(-9px,-9px)',
+									}}
+								>
+									<Text
+										fontSize="4xl"
+										fontFamily="heading"
+										fontWeight="bold"
+										color="brand.white"
+									>
+										{el.title}
+									</Text>
+									<Text color="brand.white">
+										{el.subtitle}
+									</Text>
+								</Center>
+							</GridItem>
+						))}
+					</Grid>
+				</VStack>
 			</Center>
 		</Box>
 	);
