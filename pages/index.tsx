@@ -54,8 +54,8 @@ const Home = ({ images }: HomepageProps) => {
 							fontSize="lg"
 							lineHeight="32px"
 						>
-							Now that we know who you are, I know who I am. I'm
-							not a mistake! It all makes sense!
+							Now that we know who you are, I know who I am.
+							I&apos;m not a mistake! It all makes sense!
 						</Text>
 						<Button
 							w="170px"
@@ -106,7 +106,7 @@ const Home = ({ images }: HomepageProps) => {
 					h="100vh"
 				>
 					<Heading fontSize="3xl" color="brand.white">
-						What we're about
+						What we&apos;re about
 					</Heading>
 					<HStack mt="48">
 						<Stack spacing={0} pos="relative" mt={6}>
