@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 import { useEffect, useRef, useState } from 'react';
-import { homePageImages, pillars, whyUs } from '../constants';
+import { homePageImages, pillars, whyUs, reviews } from '../constants';
 import {
 	Box,
 	HStack,
@@ -13,6 +13,7 @@ import {
 	Center,
 	Image,
 	VStack,
+	Avatar,
 } from '@chakra-ui/react';
 
 interface HomepageProps {
@@ -199,6 +200,74 @@ const Home = ({ images }: HomepageProps) => {
 										{el.subtitle}
 									</Text>
 								</Center>
+							</GridItem>
+						))}
+					</Grid>
+				</VStack>
+				<VStack
+					mt="32"
+					justifyContent="center"
+					alignItems="center"
+					h="100vh"
+					w="100%"
+					textAlign="center"
+					spacing={20}
+				>
+					<Heading fontSize="3xl" color="brand.white">
+						What others are saying about us
+					</Heading>
+					<Grid
+						templateColumns={{ sm: 'none:', md: 'repeat(3,1fr)' }}
+						gap={9}
+						w="90%"
+						mt={10}
+					>
+						{reviews.map((el, idx) => (
+							<GridItem
+								key={idx}
+								w="full"
+								h="154px"
+								p="9"
+								position="relative"
+								border="2px solid #7B61FF"
+								boxShadow="-9px 0px #5b44fd"
+								borderRadius="10px"
+								bgColor={
+									idx % 2 !== 0
+										? 'none'
+										: 'rgba(123,97,255,0.2)'
+								}
+							>
+								<Stack>
+									<Text
+										fontSize="4xl"
+										position="absolute"
+										fontWeight="bold"
+										top="-4px"
+										left="2"
+										color="brand.white"
+									>
+										“
+									</Text>
+									<Text color="brand.white">{el.review}</Text>
+									<HStack
+										position="absolute"
+										bottom="2"
+										left="2"
+									>
+										<Avatar
+											name={el.name}
+											src="https://pbs.twimg.com/profile_images/1440016777719734275/8mCVdLib_400x400.jpg"
+											size="sm"
+										/>
+										<Text
+											color="brand.white"
+											fontSize="inherit"
+										>
+											{el.name}
+										</Text>
+									</HStack>
+								</Stack>
 							</GridItem>
 						))}
 					</Grid>

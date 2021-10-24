@@ -41,3 +41,30 @@ export const whyUs = [
 	{ title: '13+', subtitle: 'shared projects' },
 	{ title: '$0', subtitle: 'to join' },
 ];
+
+export const reviews = [
+	{
+		name: '@Darryl_codes',
+		review: 'This is such a dope space for me to learn new things',
+	},
+	{
+		name: '@Darryl_codes',
+		review: 'This is such a dope space for me to learn new things',
+	},
+	{
+		name: '@Darryl_codes',
+		review: 'This is such a dope space for me to learn new things',
+	},
+	{
+		name: '@Darryl_codes',
+		review: 'This is such a dope space for me to learn new things',
+	},
+	{
+		name: '@Darryl_codes',
+		review: 'This is such a dope space for me to learn new things',
+	},
+	{
+		name: '@Darryl_codes',
+		review: 'This is such a dope space for me to learn new things',
+	},
+];
