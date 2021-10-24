@@ -104,7 +104,6 @@ const Home = ({ images }: HomepageProps) => {
 					justifyContent="center"
 					alignItems="center"
 					h="100vh"
-					bg="green"
 				>
 					<Heading fontSize="3xl" color="brand.white">
 						What we're about
