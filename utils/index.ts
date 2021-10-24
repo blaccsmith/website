@@ -1,8 +1,6 @@
 /* eslint-disable indent */
 import { request } from 'graphql-request';
-import fs from 'fs';
 import path from 'path';
-import { homePageImages } from 'constants';
 
 export const IMAGES_PATH = path.join(process.cwd(), '/public/homepage');
 
