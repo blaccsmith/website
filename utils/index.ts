@@ -1,5 +1,8 @@
 /* eslint-disable indent */
 import { request } from 'graphql-request';
+import path from 'path';
+
+export const IMAGES_PATH = path.join(process.cwd(), '/public/homepage');
 
 export const api =
 	process.env.NEXT_PUBLIC_TARGET_ENV === 'prod'
