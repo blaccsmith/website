@@ -20,6 +20,10 @@
   </a>
 </p>
 
+## Cheryl, take a look at this small section below please
+The purpose of this project is to establish BLACC's brand and bring it's identity to life. When people would go to our [old site](https://blacc.vercel.app), they wouldn't know what BLACC was aside from **_A community exemplifying black excellence and pushing the needle within tech_**; we wanted to change this!
+
+
 ## Getting Started
 
 Visit <a aria-label="getting started" href="https://github.com/blaccsmith/website/blob/main/.github/CONTRIBUTING.md">[here](https://github.com/blaccsmith/website/blob/main/.github/CONTRIBUTING.md)</a> to get started with BLACC content.
