@@ -15,6 +15,7 @@
 		"@fontsource/lato": "^4.5.0",
 		"@fontsource/montserrat": "^4.5.1",
 		"@fontsource/raleway": "^4.5.0",
+		"@notionhq/client": "^0.4.12",
 		"@supabase/supabase-js": "^1.22.5",
 		"axios": "^0.21.4",
 		"date-fns": "^2.23.0",
