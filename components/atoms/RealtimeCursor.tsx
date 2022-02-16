@@ -9,7 +9,7 @@ interface Props {
 
 export default function RealtimeCursor({ geo, color, x, y }: Props) {
 	// const { city, country } = JSON.parse(geo.split('=')[1]);
-	console.log({ geo });
+	// console.log({ geo });
 
 	return !geo ? null : (
 		<Center
