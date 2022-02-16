@@ -109,6 +109,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		headers: context.req.headers['x-geo'],
 	});
 	return {
-		props: { geo: context.req.headers['x-geo'] },
+		props: { geo: context.req.headers['x-geo'] || '' },
 	};
 };
