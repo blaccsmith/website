@@ -1,10 +1,14 @@
 import type { NextFetchEvent, NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
 export function middleware(req: NextRequest, ev: NextFetchEvent) {
-	console.log('Edit and run at the edge!');
-	console.log({
-		ip: req.ip,
-		geo: req.geo, // this will spin the globe!
-		ua: req.ua,
+	const city = req.geo?.city;
+	const country = req.geo?.country;
+	const res = NextResponse.next();
+
+	res.cookie('blacc-geo', JSON.stringify({ city, country }), {
+		maxAge: 1000 * 60 * 60 * 24 * 1,
 	});
+
+	return res;
 }
