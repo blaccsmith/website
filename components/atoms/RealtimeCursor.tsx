@@ -1,12 +1,15 @@
 import { Box, Center, Text } from '@chakra-ui/react';
 
 interface Props {
+	geo: string;
 	color: string;
 	x: number;
 	y: number;
 }
 
-export default function RealtimeCursor({ color, x, y }: Props) {
+export default function RealtimeCursor({ geo, color, x, y }: Props) {
+	const { city, country } = JSON.parse(geo.split('=')[1]);
+
 	return (
 		<Center
 			pos="absolute"
@@ -44,7 +47,7 @@ export default function RealtimeCursor({ color, x, y }: Props) {
 				bottom={-1}
 			>
 				<Text color="#fff" fontWeight="medium" fontSize="xs">
-					Dallas, TX
+					{city}, {country}
 				</Text>
 			</Box>
 		</Center>

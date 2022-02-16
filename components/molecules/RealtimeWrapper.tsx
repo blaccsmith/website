@@ -14,10 +14,11 @@ const colors = [
 ];
 
 interface Props {
+	geo: string;
 	children: React.ReactNode;
 }
 
-export default function RealtimeWrapper({ children }: Props) {
+export default function RealtimeWrapper({ children, geo }: Props) {
 	const [{ cursor }, updateMyPresence] = useMyPresence();
 	const others = useOthers();
 
@@ -40,6 +41,7 @@ export default function RealtimeWrapper({ children }: Props) {
 
 				return (
 					<RealtimeCursor
+						geo={geo}
 						key={`cursor-${connectionId}`}
 						color={colors[connectionId % colors.length]}
 						x={presence.cursor.x}

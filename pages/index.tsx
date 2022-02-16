@@ -9,11 +9,9 @@ interface Props {
 }
 
 const Home = ({ geo }: Props) => {
-	console.log({ geo });
-
 	return (
 		<RoomProvider id="only-room">
-			<RealtimeWrapper>
+			<RealtimeWrapper geo={geo}>
 				<Box>
 					<Box py="12">
 						<Image
@@ -106,6 +104,6 @@ export default Home;
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	console.log(context.req.headers);
 	return {
-		props: { geo: context.req.headers.cookie }, // will be passed to the page component as props
+		props: { geo: context.req.headers.cookie },
 	};
 };
