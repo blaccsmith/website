@@ -9,8 +9,6 @@ interface Props {
 }
 
 const Home = ({ geo }: Props) => {
-	console.log({ geo });
-
 	return (
 		<RoomProvider id="only-room">
 			<RealtimeWrapper geo={geo}>
@@ -104,10 +102,6 @@ const Home = ({ geo }: Props) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-	console.log({
-		x_geo: context.res.getHeader('x-geo'),
-		headers: context.req.headers['x-geo'],
-	});
 	return {
 		props: { geo: context.req.headers['x-geo'] || '' },
 	};
