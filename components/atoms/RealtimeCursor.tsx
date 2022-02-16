@@ -10,7 +10,7 @@ interface Props {
 export default function RealtimeCursor({ geo, color, x, y }: Props) {
 	const { city, country } = JSON.parse(geo.split('=')[1]);
 
-	return (
+	return !geo ? null : (
 		<Center
 			pos="absolute"
 			inset={0}
