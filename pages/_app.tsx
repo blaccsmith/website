@@ -19,37 +19,41 @@ import Layout from '@/components/atoms/Layout';
 import Footer from '@/components/atoms/Layout/Footer';
 import Header from '@/components/atoms/Layout/Header';
 import { canoncialUrl } from '../constants';
+import { LiveblocksProvider } from '@liveblocks/react';
+import { client } from '@/utils/liveblocks';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<ChakraProvider theme={theme}>
-			<Layout>
-				<DefaultSeo
-					title="The Black Coder Community"
-					openGraph={{
-						type: 'website',
-						url: `${canoncialUrl}`,
-						title: 'BLACC',
-						site_name: 'The Black Coder Community',
-						images: [
-							{
-								url: `${canoncialUrl}banner.png`,
-								width: 800,
-								height: 450,
-								alt: 'BLACC Banner',
-								type: 'image/png',
-							},
-						],
-					}}
-					twitter={{
-						handle: '@blaccxyz_',
-						cardType: 'summary_large_image',
-					}}
-				/>
-				<Header />
-				<Component {...pageProps} />
-				<Footer />
-			</Layout>
+			<LiveblocksProvider client={client}>
+				<Layout>
+					<DefaultSeo
+						title="The Black Coder Community"
+						openGraph={{
+							type: 'website',
+							url: `${canoncialUrl}`,
+							title: 'BLACC',
+							site_name: 'The Black Coder Community',
+							images: [
+								{
+									url: `${canoncialUrl}banner.png`,
+									width: 800,
+									height: 450,
+									alt: 'BLACC Banner',
+									type: 'image/png',
+								},
+							],
+						}}
+						twitter={{
+							handle: '@blaccxyz_',
+							cardType: 'summary_large_image',
+						}}
+					/>
+					<Header />
+					<Component {...pageProps} />
+					<Footer />
+				</Layout>
+			</LiveblocksProvider>
 		</ChakraProvider>
 	);
 }
