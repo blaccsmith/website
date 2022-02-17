@@ -102,6 +102,8 @@ const Home = ({ geo }: Props) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+	console.log({ geo: context.req.headers['x-geo'] || '' });
+
 	return {
 		props: { geo: context.req.headers['x-geo'] || '' },
 	};
